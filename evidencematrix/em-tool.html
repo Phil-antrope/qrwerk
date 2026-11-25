@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceMatrix – Belegmatrix lokal aus CSV</title>
+  <meta name="description" content="Aus einer CSV-Liste eine druckbare Belegmatrix, Lückenliste und Fälligkeitsliste erzeugen. 100 % lokal im Browser, ohne Upload, Konto oder Cookies.">
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="em-style.css?v=1">
+</head>
+<body>
+  <header>
+    <div class="brand">EM EvidenceMatrix</div>
+    <div class="tag">lokal · ohne Upload · ohne Konto</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Belegmatrix aus CSV – in Sekunden, lokal im Browser</h1>
+      <p>Trage deine eigenen Kontroll-IDs, Belegdateien und Reviewdaten ein. EvidenceMatrix
+        erstellt eine druckbare Matrix, eine Lückenliste und eine Liste fälliger Reviews.
+        Keine Normtexte, keine Beratung, keine Datenübertragung.</p>
+      <p class="hinweis"><strong>Kein ISO-Produkt, keine Zertifizierung, keine Beratung,
+        keine Garantie für Auditannahme.</strong> Die Verantwortung für Vollständigkeit und
+        Bewertung liegt vollständig bei dir.</p>
+    </section>
+
+    <section class="panel">
+      <h2>1 · CSV eingeben</h2>
+      <p class="small">Spalten: <code>Kontroll-ID;Belegdatei;Datum;Status;Verantwortlich;Review;Notiz</code>.
+        Trennzeichen <code>;</code>, <code>,</code> oder Tab werden erkannt. Deutsche und englische
+        Spaltennamen funktionieren. Datum <code>JJJJ-MM-TT</code> oder <code>TT.MM.JJJJ</code>.</p>
+      <textarea id="csv" rows="12" spellcheck="false" placeholder="Kontroll-ID;Belegdatei;Datum;Status;Review&#10;AC-01;zugriff.png;2026-10-04;ok;2026-12-01"></textarea>
+      <div class="controls">
+        <button id="sample" type="button">Musterdaten laden</button>
+        <button id="save-template" type="button">Vorlage lokal speichern</button>
+        <button id="load-template" type="button">Vorlage laden</button>
+        <label>Stichtag <input id="reference" type="date" value="2026-11-25"></label>
+        <label>Fenster (Tage) <input id="window" type="number" min="0" max="365" value="14"></label>
+        <label class="pro"><input id="pro" type="checkbox"> Pro-Demo</label>
+      </div>
+      <button id="analyze" class="primary" type="button">Analysieren</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Ergebnis</h2>
+      <div id="summary" class="summary">Noch keine Analyse.</div>
+      <div class="tablewrap">
+        <table id="matrix">
+          <thead><tr><th>Zeile</th><th>ID</th><th>Belegdatei</th><th>Datum</th><th>Status</th><th>Owner</th><th>Review</th><th>Notiz</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <h3>Lücken</h3>
+      <ul id="gaps"><li>Noch keine Analyse.</li></ul>
+      <h3>Fällige Reviews</h3>
+      <ul id="due"><li>Noch keine Analyse.</li></ul>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Ausgabe</h2>
+      <div class="controls">
+        <button id="print" type="button">Druckbericht öffnen</button>
+        <button id="dl-report" type="button">Bericht als HTML</button>
+        <button id="dl-matrix" type="button">Matrix als CSV</button>
+        <button id="dl-gaps" type="button">Lücken als CSV</button>
+        <button id="dl-due" type="button">Reviews als CSV</button>
+      </div>
+      <p class="small">Alles wird ausschliesslich auf diesem Gerät erzeugt. Es gibt keinen Upload,
+        keinen Lizenzserver und keine Cloud-Synchronisierung. Vorlagen liegen nur im lokalen
+        Browser-Speicher dieses Geräts.</p>
+    </section>
+
+    <section class="panel faq">
+      <h2>Häufige Fragen</h2>
+      <h3>Welche Spalten brauche ich?</h3>
+      <p>Mindestens <code>Kontroll-ID</code> und <code>Belegdatei</code>. Datum, Status,
+        Verantwortlich, Review und Notiz sind optional. Die Reihenfolge ist egal.</p>
+      <h3>Was gilt als Lücke?</h3>
+      <p>Fehlende ID, fehlende Belegdatei, doppelte Kombination aus ID und Belegdatei,
+        Status <em>offen/fällig/abgelaufen</em> sowie Reviews innerhalb des gewählten Fensters.</p>
+      <h3>Speicherst du meine Daten?</h3>
+      <p>Nein. Es gibt keinen Server und kein Tracking. Nur wenn du es ausdrücklich klickst,
+        wird deine Eingabe als Vorlage im lokalen Browser-Speicher abgelegt.</p>
+      <h3>Ist das eine ISO-27001-Software?</h3>
+      <p>Nein. Es ist ein reines Strukturwerkzeug für deine eigenen Listen. Keine Normtexte,
+        keine Konformitätsaussage, keine Beratung.</p>
+    </section>
+  </main>
+
+  <footer>
+    EvidenceMatrix · PROJECT 10 MILLION · Kein Tracking, keine Cookies, keine externen Ressourcen.
+    Gratis: 5 Zeilen pro Analyse. Pro-Demo: lokaler Schalter <code>?pro=1</code>, ohne Konto und ohne Lizenzserver.
+  </footer>
+
+  <iframe id="report-frame" title="Druckbericht" hidden></iframe>
+  <script src="em-core.js?v=1"></script>
+  <script src="em-features.js?v=1"></script>
+  <script src="em-app.js?v=1"></script>
+</body>
+</html>

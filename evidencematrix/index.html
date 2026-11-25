@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceMatrix – Belegmatrix offline aus CSV</title>
+  <meta name="description" content="Aus deiner eigenen CSV-Liste eine druckbare Belegmatrix, Lückenliste und Fälligkeitsliste erstellen. 100 % lokal im Browser, ohne Upload, Konto oder Cookies.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/evidencematrix/">
+  <meta property="og:title" content="EvidenceMatrix – Belegmatrix offline aus CSV">
+  <meta property="og:description" content="Struktur statt Beratung: deine Belege, deine Matrix, lokal im Browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phil-antrope.github.io/qrwerk/evidencematrix/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EvidenceMatrix",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Webbrowser",
+    "url": "https://phil-antrope.github.io/qrwerk/evidencematrix/",
+    "description": "Lokaler Assembler für Belegmatrizen aus CSV: Lücken und fällige Reviews erkennen, ohne Upload und ohne Konto.",
+    "offers": { "@type": "Offer", "price": "39", "priceCurrency": "CHF" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was macht EvidenceMatrix?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die Anwendung liest eine selbst gepflegte CSV-Liste mit Kontroll-IDs, Belegdateien, Status und Reviewdaten und erzeugt daraus eine druckbare Matrix, eine Lückenliste und eine Liste fälliger Reviews. Alles bleibt im Browser." }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist EvidenceMatrix eine ISO-27001-Software?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Es werden keine Normtexte oder Kontrollkataloge mitgeliefert, keine Konformität zugesagt und keine Beratung angeboten. Das Tool strukturiert ausschliesslich deine eigenen Angaben." }
+      },
+      {
+        "@type": "Question",
+        "name": "Werden meine Daten hochgeladen?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Es gibt keinen Server, kein Tracking, keine Cookies und keine externen Ressourcen. Eine Vorlage wird nur auf ausdrücklichen Klick im lokalen Browser-Speicher abgelegt." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet EvidenceMatrix?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die Gratisversion ist kostenlos und verarbeitet 5 Zeilen pro Analyse. Die Pro-Datei kostet CHF 39 einmalig, ohne Abo und ohne Lizenzserver. Der Verkauf startet erst mit einem verifizierten Produktlisting." }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root{color-scheme:light;--ink:#16202a;--muted:#5a6673;--line:#d8dee5;--accent:#1d6b57;--warn:#fff3cd}
+    *{box-sizing:border-box}body{margin:0;font:15px/1.55 Arial,Helvetica,"Liberation Sans",sans-serif;color:var(--ink);background:#f6f8fa}
+    header{display:flex;justify-content:space-between;gap:12px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--line)}
+    .brand{font-weight:700}.tag{color:var(--muted);font-size:13px}
+    main{max-width:920px;margin:24px auto;padding:0 16px}
+    section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:16px}
+    h1{font-size:28px;line-height:1.25;margin:0 0 10px}h2{font-size:19px;margin:0 0 8px}h3{font-size:15px;margin:16px 0 6px}
+    .lead{font-size:17px}.hinweis{background:var(--warn);border-left:4px solid #d39c00;padding:10px 12px;border-radius:4px}
+    a.button,button{display:inline-block;padding:10px 14px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:5px;text-decoration:none;font-weight:700;cursor:pointer}
+    a.button.alt{background:#fff;color:var(--accent)}
+    ul{padding-left:20px}.small{color:var(--muted);font-size:13px}code{background:#eef2f5;padding:1px 4px;border-radius:3px}
+    footer{max-width:920px;margin:0 auto 30px;padding:0 16px;color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <header><div class="brand">EM EvidenceMatrix</div><div class="tag">PROJECT 10 MILLION · lokal &amp; anonym</div></header>
+  <main>
+    <section>
+      <h1>Deine Belege. Deine Matrix. Lokal.</h1>
+      <p class="lead">EvidenceMatrix macht aus einer einfachen CSV-Liste eine druckbare
+        Belegmatrix – mit Lückenliste und Fälligkeitsliste. Ohne Upload, ohne Konto, ohne Cookies.</p>
+      <p><a class="button" href="em-tool.html">Tool kostenlos testen</a>
+        <a class="button alt" href="em-tool.html?pro=1">Pro-Demo ansehen</a></p>
+      <p class="small">Gratis: 5 Zeilen pro Analyse. Pro: unbegrenzte Zeilen, als lokaler
+        Schalter ohne Lizenzserver. <strong>Verkaufslink folgt mit dem verifizierten Listing.</strong></p>
+      <p class="hinweis"><strong>Kein ISO-Produkt, keine Zertifizierung, keine Beratung,
+        keine Garantie für Auditannahme.</strong> Es werden keine Normtexte mitgeliefert.</p>
+    </section>
+
+    <section>
+      <h2>Für wen?</h2>
+      <ul>
+        <li>Kleine Teams und SaaS, die eigene Nachweislisten für internen Gebrauch strukturieren</li>
+        <li>Alle, die Belege, Verantwortliche und Reviewdaten aus einer Tabelle in eine druckbare Matrix bringen wollen</li>
+        <li>Menschen, die ihre Unterlagen nicht auf einen fremden Server laden möchten</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Wie es funktioniert</h2>
+      <ol>
+        <li>CSV mit <code>Kontroll-ID;Belegdatei;Datum;Status;Verantwortlich;Review;Notiz</code> eingeben.</li>
+        <li>Stichtag und Fenster wählen, auf „Analysieren“ klicken.</li>
+        <li>Matrix drucken oder Lücken und Fälligkeiten als CSV exportieren.</li>
+      </ol>
+      <p class="small">Erkennt fehlende IDs und Belege, doppelte ID/Beleg-Kombinationen,
+        offene oder abgelaufene Status sowie fällige Reviews. Keine Bewertung von Inhalten.</p>
+    </section>
+
+    <section>
+      <h2>Häufige Fragen</h2>
+      <h3>Ist das eine ISO-27001-Software?</h3>
+      <p>Nein. Das Tool strukturiert nur deine eigenen Angaben. Keine Normtexte, keine Konformitätsaussage, keine Beratung.</p>
+      <h3>Werden Daten übertragen?</h3>
+      <p>Nein. Kein Server, kein Tracking, keine Cookies, keine externen Skripte oder Fonts. Alles bleibt im Browser.</p>
+      <h3>Kann ich es kommerziell nutzen?</h3>
+      <p>Ja. Die Gratisversion ist kostenlos; die Pro-Datei wird über Gumroad angeboten, sobald das Listing verifiziert ist. Kein technischer Lizenzserver.</p>
+    </section>
+  </main>
+  <footer>EvidenceMatrix · PROJECT 10 MILLION · Keine personenbezogenen Daten, keine Werbung, keine Ausgaben. Preis: CHF 39 einmalig, Endbetrag inkl. allfälliger MWST/Abgaben.</footer>
+</body>
+</html>
