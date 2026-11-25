@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neues QR-Bill-Adressformat ab 14. November 2026 – QRWerk Wissen</title>
+  <meta name="description" content="Seit SIX QR-bill v2.4 sind nur noch strukturierte Adressen erlaubt. Was sich am Adressformat geändert hat und wie du alte Vorlagen erkennst.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/wissen/qr-bill-adressformat-2026.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org", "@type":"FAQPage", "mainEntity":[
+    {"@type":"Question","name":"Was hat sich am QR-Bill-Adressformat geändert?","acceptedAnswer":{"@type":"Answer","text":"Mit SIX QR-bill v2.3/v2.4 ist der kombinierte Adressdatensatz (Typ K) weggefallen. Es werden nur noch strukturierte Adressen (Typ S) verwendet."}},
+    {"@type":"Question","name":"Wie erkenne ich eine alte QR-Rechnung?","acceptedAnswer":{"@type":"Answer","text":"In Zeile 5 der SPC-Payload steht S für strukturiert oder K für die alte kombinierte Adresse."}}
+  ]}
+  </script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">Q</span> QRWerk · Wissen</div>
+    <div class="badges"><span class="badge">gültig ab 14.11.2026</span></div></header>
+  <main>
+    <article>
+      <h1>Neues Adressformat ab 14. November 2026</h1>
+      <p class="lead">Die SIX Implementation Guideline QR-bill v2.4 ist seit dem
+        14. November 2026 gültig. Wer alte Vorlagen weiterverwendet, riskiert Adressen in
+        einem Format, das nicht mehr erlaubt ist.</p>
+
+      <section class="card">
+        <h2>Konkret: Typ S statt Typ K</h2>
+        <p>Früher konnte die Adresse in einem kombinierten Datensatz (Typ K) stehen.
+          Seit Version 2.3 ist dieser weggefallen; verwendet werden nur noch
+          <strong>strukturierte Adressen (Typ S)</strong> mit eigenen Feldern für Name,
+          Strasse, Hausnummer, PLZ, Ort und Land.</p>
+        <p>In der SPC-0200-Payload steht in Zeile 5 entsprechend <strong>S</strong> für
+          strukturiert. Ein <strong>K</strong> weist auf eine alte, nicht mehr zulässige
+          Adressstruktur hin.</p>
+      </section>
+
+      <section class="card tonal">
+        <h2>Was du tun solltest</h2>
+        <ul>
+          <li>Alte Excel-/PDF-Vorlagen prüfen und auf strukturierte Adressen umstellen.</li>
+          <li>Einen gedruckten Beleg mit der eigenen Bank testen, bevor du ihn produktiv einsetzt.</li>
+          <li>Massgeblich bleibt die offizielle SIX-Spezifikation – nicht eine fremde Anleitung.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Praktische Hilfe</h2>
+        <p><a href="../tool.html">QRWerk erzeugt von Grund auf strukturierte Adressen</a>
+          und prüft die Referenzlogik lokal im Browser. Kein Upload, kein Konto, keine Cookies.</p>
+        <p class="hint">Quelle: SIX Payment Standards, Implementation Guidelines QR-bill v2.4.
+          QRWerk ist kein SIX-Produkt, nicht zertifiziert und bietet keine Beratung.</p>
+      </section>
+      <p><a href="index.html">← Alle Anleitungen</a></p>
+    </article>
+  </main>
+  <footer><span>QRWerk · anonymes Handelsbranding</span><span>Keine externen Ressourcen · keine Datenübertragung</span></footer>
+</body>
+</html>

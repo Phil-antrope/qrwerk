@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR-IBAN oder normale IBAN? – QRWerk Wissen</title>
+  <meta name="description" content="Wann bei einer Schweizer QR-Rechnung eine QR-IBAN und wann eine normale IBAN verwendet wird – und wie QRR- und SCOR-Referenzen zusammenhängen.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/wissen/qr-iban-oder-iban.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org", "@type":"FAQPage", "mainEntity":[
+    {"@type":"Question","name":"Wann brauche ich eine QR-IBAN?","acceptedAnswer":{"@type":"Answer","text":"Bei einer QRR-Referenz. Die QR-IBAN gehört zur QRR und ist nur für CHF-Zahlungen vorgesehen."}},
+    {"@type":"Question","name":"Wann verwende ich die normale IBAN?","acceptedAnswer":{"@type":"Answer","text":"Bei SCOR-/RF-Referenzen und wenn keine QRR-Referenz vorliegt."}}
+  ]}
+  </script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">Q</span> QRWerk · Wissen</div>
+    <div class="badges"><span class="badge">SPC 0200 · v2.4</span></div></header>
+  <main>
+    <article>
+      <h1>QR-IBAN oder normale IBAN?</h1>
+      <p class="lead">Die kurze Regel: <strong>QRR-Referenz → QR-IBAN</strong>.
+        <strong>SCOR-/RF-Referenz oder keine QRR → normale IBAN</strong>.</p>
+
+      <section class="card">
+        <h2>Was ist der Unterschied?</h2>
+        <p>Eine QR-IBAN ist eine Schweizer IBAN mit einer Institutskennung (IID) im Bereich
+          30000–31999. Sie ist ausschliesslich für QR-Rechnungen mit QRR-Referenz gedacht.
+          Die QRR besteht aus 26 Ziffern plus einer Prüfziffer (rekursiv Modulo 10).</p>
+        <p>Die normale IBAN wird verwendet, wenn die Referenz nicht vom QRR-Typ ist – etwa bei
+          einer SCOR-Referenz (RF-Format nach ISO 11649) oder wenn gar keine strukturierte
+          Referenz gesetzt wird.</p>
+      </section>
+
+      <section class="card tonal">
+        <h2>Häufiger Fehler</h2>
+        <p>QR-IBAN und SCOR-Referenz zu kombinieren oder eine QRR mit normaler IBAN zu
+          verwenden. Solche Kombinationen können von der Bank abgelehnt werden. QRWerk prüft
+          die Kombination lokal im Browser, bevor der QR-Code erzeugt wird.</p>
+      </section>
+
+      <section class="card">
+        <h2>Selbst prüfen</h2>
+        <p><a href="../tool.html">QRWerk kostenlos öffnen</a> — IBAN und Referenz eintragen,
+          „CSV prüfen" klicken. Das Tool meldet ungültige Kombinationen direkt in der Tabelle.
+          Alles bleibt auf deinem Gerät; kein Upload, kein Konto.</p>
+        <p class="hint">Massgeblich ist die aktuelle SIX Implementation Guideline QR-bill.
+          QRWerk ist kein SIX-Produkt, nicht zertifiziert und übernimmt keine Garantie für
+          die Annahme durch eine Bank.</p>
+      </section>
+      <p><a href="index.html">← Alle Anleitungen</a></p>
+    </article>
+  </main>
+  <footer><span>QRWerk · anonymes Handelsbranding</span><span>Keine externen Ressourcen · keine Datenübertragung</span></footer>
+</body>
+</html>

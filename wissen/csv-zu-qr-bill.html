@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR-Rechnungen aus CSV in Stapeln erzeugen – QRWerk Wissen</title>
+  <meta name="description" content="Schritt-für-Schritt: aus einer CSV-Liste geprüfte Schweizer QR-Bills erzeugen – lokal im Browser, ohne Upload und ohne Konto.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/wissen/csv-zu-qr-bill.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org", "@type":"HowTo",
+    "name":"QR-Rechnungen aus CSV in Stapeln erzeugen",
+    "step":[{"@type":"HowToStep","name":"CSV vorbereiten","text":"Spalten für IBAN, Betrag, Währung, Referenztyp, Referenz und Kunde anlegen."},
+            {"@type":"HowToStep","name":"Zahlungsadresse erfassen","text":"Name, Strasse, Hausnummer, PLZ, Ort und IBAN der Zahlungsadresse eingeben."},
+            {"@type":"HowToStep","name":"Prüfen","text":"CSV einfügen und auf CSV prüfen klicken; Fehler in der Tabelle korrigieren."},
+            {"@type":"HowToStep","name":"QR-Bills erzeugen","text":"Auf QR-Bills erzeugen klicken, Vorschau und Drucklayout prüfen."}] }
+  </script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">Q</span> QRWerk · Wissen</div>
+    <div class="badges"><span class="badge">5 QR-Bills gratis</span></div></header>
+  <main>
+    <article>
+      <h1>QR-Rechnungen aus CSV in Stapeln</h1>
+      <p class="lead">Wer monatlich viele QR-Rechnungen stellt, tippt sie nicht einzeln ab.
+        Eine CSV-Liste plus ein lokales Tool genügt – vorausgesetzt, die Daten werden vor dem
+        Druck geprüft.</p>
+
+      <section class="card">
+        <h2>1. CSV vorbereiten</h2>
+        <p>Nütze Spalten für <code>IBAN</code>, <code>Betrag</code>, <code>Währung</code>,
+          <code>Referenztyp</code>, <code>Referenz</code>, <code>Kunde</code>, <code>PLZ</code>,
+          <code>Ort</code> und <code>Nachricht</code>. Trennzeichen können Semikolon, Komma
+          oder Tabulator sein.</p>
+      </section>
+
+      <section class="card">
+        <h2>2. Zahlungsadresse erfassen</h2>
+        <p>Name/Firma, Strasse, Hausnummer, PLZ, Ort, Land und die eigene IBAN bzw. QR-IBAN
+          werden einmal pro Vorgang erfasst und auf allen QR-Bills des Stapels verwendet.</p>
+      </section>
+
+      <section class="card tonal">
+        <h2>3. Prüfen, dann erzeugen</h2>
+        <p>CSV einfügen, auf „CSV prüfen" klicken und die Tabelle auf Fehler prüfen. Erst wenn
+          alle Zeilen gültig sind, „QR-Bills erzeugen" klicken. Vorschau und Drucklayout
+          ansehen – und vor dem produktiven Einsatz einen gedruckten Beleg mit der Bank testen.</p>
+      </section>
+
+      <section class="card">
+        <h2>4. Lokal statt Upload</h2>
+        <p><a href="../tool.html">QRWerk</a> macht Parsing, Prüfung, QR-Erzeugung und Druck
+          vollständig im Browser. Gratis bis 5 QR-Bills pro Vorgang; die
+          <a href="https://gumroad.com/l/focvs">Pro-Version (CHF 39)</a> erlaubt unbegrenzte
+          Stapel, lokale Vorlagen und einen Berichtsexport als CSV/JSON. Kein XLSX-Import,
+          kein Lizenzserver, keine Datenübertragung.</p>
+        <p class="hint">Kein SIX-Produkt, keine Zertifizierung, keine Garantie für
+          Bankannahme, keine Rechts- oder Steuerberatung.</p>
+      </section>
+      <p><a href="index.html">← Alle Anleitungen</a></p>
+    </article>
+  </main>
+  <footer><span>QRWerk · anonymes Handelsbranding</span><span>Keine externen Ressourcen · keine Datenübertragung</span></footer>
+</body>
+</html>
