@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QRWerk – Schweizer QR-Rechnungen im Stapel, lokal im Browser</title>
-  <meta name="description" content="CSV-Datei zu geprüften Schweizer QR-Bills: IBAN, QR-IBAN und Referenz prüfen, SPC 0200 nach SIX v2.4. 100 % lokal im Browser, ohne Upload und ohne Konto. Gratis mit 5 QR-Bills, Pro CHF 39.">
+  <title>PROJECT 10 MILLION – lokale Tools für Schweizer Geschäftsalltag</title>
+  <meta name="description" content="Zwei lokale Browser-Tools: EvidenceMatrix für Belegmatrizen aus CSV und QRWerk für Schweizer QR-Rechnungen im Stapel. Kein Upload, kein Konto, keine Cookies.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/">
-  <meta property="og:title" content="QRWerk – Schweizer QR-Rechnungen im Stapel">
-  <meta property="og:description" content="CSV rein, geprüfte QR-Bills raus. Lokal im Browser, ohne Upload und ohne Konto.">
+  <meta property="og:title" content="PROJECT 10 MILLION – lokale Tools, keine Server">
+  <meta property="og:description" content="EvidenceMatrix und QRWerk: zwei Werkzeuge, die vollständig im Browser laufen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://phil-antrope.github.io/qrwerk/">
   <meta name="twitter:card" content="summary">
@@ -20,167 +20,252 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Webbrowser",
     "url": "https://phil-antrope.github.io/qrwerk/",
-    "description": "Erzeugt aus CSV geprüfte Schweizer QR-Bills mit SPC-0200-Payload nach SIX IG QR-bill v2.4. Läuft vollständig lokal im Browser, ohne Upload, Konto oder Cookies.",
+    "description": "Erzeugt aus CSV geprüfte Schweizer QR-Bills mit SPC-0200-Payload nach SIX IG QR-bill v2.4. Läuft vollständig lokal im Browser.",
     "inLanguage": "de-CH",
     "offers": {
       "@type": "Offer",
       "price": "39",
       "priceCurrency": "CHF",
-      "url": "https://gumroad.com/l/focvs",
-      "description": "QRWerk Pro: unbegrenzte Stapel, lokale Vorlagen, Berichtsexport, DE/FR/IT/EN/RM-Labels. Einmalig, kein Abo."
+      "url": "https://1502003004208.gumroad.com/l/focvs",
+      "description": "QRWerk Pro: unbegrenzte Stapel, lokale Vorlagen, Berichtsexport und DE/FR/IT/EN/RM-Labels."
     }
   }
   </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Werden meine Kundendaten hochgeladen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nein. Parsing, Prüfung, QR-Erzeugung und Druck laufen im Browser. Es gibt keine externen Skripte und keine Analyse."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Ist QRWerk offiziell zertifiziert?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nein. Es ist ein unabhängiges Tool, kein Produkt der SIX Group, ohne Zertifizierung und ohne Garantie für Bankannahme."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Was kostet QRWerk?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Die Gratisversion ist kostenlos und erlaubt 5 QR-Bills pro Vorgang. QRWerk Pro kostet CHF 39 einmalig über Gumroad, ohne Abo und ohne Lizenzserver."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie erkenne ich alte QR-Bills mit ungültigem Adressformat?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Scanne den QR-Code mit einer beliebigen Reader-App: In Zeile 5 steht S für strukturiert oder K für die alte, kombinierte Adresse. Seit dem 14. November 2026 sind nur noch strukturierte Adressen erlaubt. Prüfe die massgebliche SIX-Spezifikation und teste einen gedruckten Beleg mit deiner Bank."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wann brauche ich eine QR-IBAN?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eine QR-IBAN gehört zur QRR-Referenz und ist nur für CHF-Zahlungen vorgesehen. Ohne QRR wird die normale IBAN verwendet; bei SCOR/RF-Referenzen ebenfalls. QRWerk prüft diese Kombination vor dem Druck."
-        }
-      }
-    ]
+    "@type": "SoftwareApplication",
+    "name": "EvidenceMatrix",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Webbrowser",
+    "url": "https://phil-antrope.github.io/qrwerk/evidencematrix/",
+    "description": "Lokaler Assembler für Belegmatrizen aus CSV: Lücken und fällige Reviews erkennen, ohne Upload und ohne Konto.",
+    "inLanguage": "de-CH",
+    "offers": {
+      "@type": "Offer",
+      "price": "39",
+      "priceCurrency": "CHF",
+      "url": "https://1502003004208.gumroad.com/l/evidencematrix",
+      "description": "EvidenceMatrix Pro: unbegrenzte Zeilen, lokaler Schalter ohne Lizenzserver."
+    }
   }
   </script>
-  <link rel="stylesheet" href="tool-style.css?v=3">
+  <style>
+    :root{color-scheme:light;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#fbfbfd;--card:#fff;--accent:#0a6c54;--accent-dark:#064c3b;--soft:#eaf4f0;--dark:#0c1512;--warn:#fff4d6;--warn-line:#d19a16}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .skip{position:absolute;left:-999px;top:0;background:#fff;padding:10px 14px;z-index:30}
+    .skip:focus{left:12px;top:12px}
+    .site{position:sticky;top:0;z-index:20;background:rgba(251,251,253,.82);border-bottom:1px solid rgba(0,0,0,.06);backdrop-filter:saturate(180%) blur(18px)}
+    .nav{max-width:1120px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:15px}
+    .mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(145deg,#0a6c54,#47b58e);color:#fff;font-size:11px;letter-spacing:.06em}
+    .navlinks{display:flex;gap:20px;align-items:center;font-size:13px;flex-wrap:wrap}
+    .navlinks a{text-decoration:none;color:#3f4a45}
+    .navlinks a:hover{color:var(--accent)}
+    .navlinks .cta{background:var(--accent);color:#fff;padding:8px 13px;border-radius:999px;font-weight:700}
+    .navlinks .cta:hover{background:var(--accent-dark);color:#fff}
+    .hero{max-width:1120px;margin:auto;padding:86px 22px 60px;text-align:center}
+    .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+    h1{font-size:clamp(2.7rem,6.4vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin:16px auto 18px;max-width:15ch}
+    h2{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.08;letter-spacing:-.045em;margin:0 0 14px}
+    h3{font-size:1.05rem;letter-spacing:-.015em;margin:0 0 6px}
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);color:#44514b;max-width:62ch;margin:0 auto}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;margin:30px 0 14px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 19px;border-radius:999px;text-decoration:none;font-weight:750;border:1px solid var(--accent);background:var(--accent);color:#fff}
+    .btn:hover{background:var(--accent-dark);color:#fff}
+    .btn.ghost{background:#fff;color:var(--accent)}
+    .btn.ghost:hover{background:var(--soft);color:var(--accent-dark)}
+    .small{color:var(--muted);font-size:13px}
+    .stage{max-width:1120px;margin:0 auto;padding:0 22px 70px}
+    .stage-inner{background:linear-gradient(160deg,#0c1512,#173d31 55%,#0c1512);border-radius:28px;padding:34px;color:#fff;box-shadow:0 30px 80px rgba(9,25,20,.25)}
+    .stage-top{display:flex;justify-content:space-between;gap:12px;color:#b9d4c9;font-size:12px;margin-bottom:20px}
+    .stage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .mock{background:rgba(255,255,255,.96);border-radius:18px;padding:18px;color:var(--ink);min-height:210px}
+    .mock .label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+    .mock h3{font-size:20px;margin:8px 0}
+    .mock p{color:#4b5852;font-size:13px;margin:0 0 12px}
+    .mock .bar{height:8px;border-radius:999px;background:var(--soft);margin:8px 0}
+    .mock .bar.short{width:62%}
+    .mock .bar.mid{width:82%}
+    .wrap{max-width:1120px;margin:auto;padding:0 22px}
+    .section{padding:76px 0}
+    .section.tight{padding:52px 0}
+    .center{text-align:center}
+    .grid{display:grid;gap:18px}
+    .grid.two{grid-template-columns:repeat(2,1fr)}
+    .grid.three{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 12px 40px rgba(17,24,39,.04)}
+    .card.primary{border-color:rgba(10,108,84,.28);background:linear-gradient(160deg,#fff,#f0f8f4)}
+    .card .num{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.08em}
+    .card p{color:var(--muted);margin:0}
+    .dark{background:var(--dark);color:#fff}
+    .dark h2,.dark h3{color:#fff}
+    .dark .small,.dark p{color:#b8ccc2}
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;justify-content:center}
+    .pillrow span{padding:8px 13px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:12px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+    .step{position:relative;padding-top:12px}
+    .step .n{display:block;font-size:54px;font-weight:900;letter-spacing:-.06em;color:var(--accent);line-height:1}
+    .step h3{margin:12px 0 6px}
+    .step p{color:var(--muted);margin:0;font-size:14px}
+    code{background:#eef3f0;padding:2px 5px;border-radius:5px;font-size:.92em}
+    .price{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}
+    .price .plan{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}
+    .price .plan.hi{background:var(--dark);color:#fff;border-color:var(--dark)}
+    .price .plan.hi p,.price .plan.hi .small{color:#b8ccc2}
+    .amount{font-size:40px;font-weight:900;letter-spacing:-.05em;margin:6px 0}
+    .plan ul{padding-left:18px;margin:12px 0 0;font-size:14px}
+    .notice{background:var(--warn);border-left:4px solid var(--warn-line);border-radius:12px;padding:13px 15px;font-size:14px;margin-top:22px}
+    details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin-bottom:10px}
+    summary{cursor:pointer;font-weight:750}
+    details p{color:var(--muted);margin:10px 0 0}
+    footer{border-top:1px solid var(--line);background:#fff}
+    .footer-inner{max-width:1120px;margin:auto;padding:26px 22px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;color:var(--muted);font-size:13px}
+    footer a{color:var(--accent);text-decoration:none}
+    @media(max-width:820px){
+      .hero{padding-top:56px}
+      .stage-grid,.grid.two,.grid.three,.steps,.price{grid-template-columns:1fr}
+      .navlinks a:not(.cta){display:none}
+      .stage-inner{padding:22px;border-radius:20px}
+    }
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand"><span class="mark">Q</span> QRWerk</div>
-    <div class="badges"><span class="badge">SPC 0200 · v2.4</span><a class="badge" href="evidencematrix/" style="text-decoration:none">EvidenceMatrix ↗</a></div>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="index.html"><span class="mark">P10</span> PROJECT 10 MILLION</a>
+      <div class="navlinks">
+        <a href="#produkte">Produkte</a>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#preise">Preise</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="evidencematrix/em-tool.html">Tools starten</a>
+      </div>
+    </nav>
   </header>
 
-  <main>
+  <main id="inhalt">
     <section class="hero">
-      <h1>CSV rein. QR-Rechnungen raus.</h1>
-      <p class="lead">QRWerk erzeugt Schweizer QR-Bills stapelweise aus deiner Tabelle – prüft IBAN,
-        QR-IBAN und Referenz und meldet Fehler, bevor die Bank sie meldet.</p>
-      <p class="hint">Läuft vollständig in deinem Browser. Kein Upload. Kein Konto. Keine Cookies.</p>
+      <span class="eyebrow">Lokal · Anonym · Kostenlos</span>
+      <h1>Deine Daten. Deine Tools. Kein Server.</h1>
+      <p class="lead">Zwei kleine Werkzeuge für den Schweizer Geschäftsalltag. Sie laufen vollständig in deinem Browser – ohne Upload, ohne Konto und ohne Cookies.</p>
       <div class="actions">
-        <a href="tool.html"><button type="button">Tool kostenlos testen</button></a>
-        <a href="https://gumroad.com/l/focvs"><button type="button">Pro-Version kaufen – CHF 39</button></a>
+        <a class="btn" href="evidencematrix/">EvidenceMatrix entdecken</a>
+        <a class="btn ghost" href="tool.html">QRWerk testen</a>
       </div>
-      <p class="hint">Gratis: 5 QR-Bills pro Vorgang. Pro: unbegrenzte Stapel, Vorlagen,
-        Berichtsexport und DE/FR/IT/EN/RM-Labels – weiterhin 100 % lokal im Browser.</p>
+      <p class="small">CHF 0 Fixkosten. Keine externen Ressourcen. Kein Tracking.</p>
     </section>
 
-    <section class="card">
-      <h2>Für wen?</h2>
-      <p class="sub">Für Selbständige, kleine Firmen und Vereine in der Schweiz und in Liechtenstein,
-        die regelmässig viele QR-Rechnungen aus einer Liste erstellen.</p>
-      <ul>
-        <li>Monatliche Rechnungen oder Mitgliederbeiträge aus einer Tabelle</li>
-        <li>Prüfung vor dem Druck statt Ablehnung an der Kasse</li>
-        <li>QR-IBAN und QRR-Referenz werden automatisch geprüft</li>
-        <li>Strukturierte Adressen gemäss SIX ab Version 2.3</li>
-      </ul>
+    <section class="stage">
+      <div class="stage-inner">
+        <div class="stage-top"><span>PRODUKTÜBERSICHT</span><span>100 % lokal im Browser</span></div>
+        <div class="stage-grid">
+          <div class="mock">
+            <div class="label">Primary</div>
+            <h3>EvidenceMatrix</h3>
+            <p>Aus deiner CSV-Liste wird eine druckbare Belegmatrix mit Lücken und Fälligkeiten.</p>
+            <div class="bar"></div><div class="bar mid"></div><div class="bar short"></div>
+            <p style="margin-top:14px"><a class="btn ghost" href="evidencematrix/">Produktseite öffnen</a></p>
+          </div>
+          <div class="mock">
+            <div class="label">Zweites Tool</div>
+            <h3>QRWerk</h3>
+            <p>Schweizer QR-Rechnungen im Stapel – mit Prüfung von IBAN, QR-IBAN und Referenz.</p>
+            <div class="bar"></div><div class="bar short"></div><div class="bar mid"></div>
+            <p style="margin-top:14px"><a class="btn ghost" href="tool.html">Tool starten</a></p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="card tonal">
-      <h2>Warum jetzt?</h2>
-      <p>Die SIX Implementation Guideline QR-bill v2.4 ist seit 14. November 2026 gültig.
-        Wer alte Vorlagen nutzt, riskiert Adressen im nicht mehr erlaubten Format. QRWerk
-        erzeugt von Grund auf strukturierte Adressen und prüft die Referenzlogik.</p>
-      <p class="hint">Quelle: SIX Payment Standards, Implementation Guidelines QR-bill v2.4.
-        QRWerk ist kein Produkt von SIX.</p>
+    <section class="wrap section" id="produkte">
+      <div class="center">
+        <span class="eyebrow">Zwei Werkzeuge</span>
+        <h2>Einfach. Lokal. Ehrlich.</h2>
+        <p class="lead">Kein Abo, kein Server, keine Datenübertragung. Du entscheidest, was du eingibst – und behältst es.</p>
+      </div>
+      <div class="grid two" style="margin-top:34px">
+        <article class="card primary">
+          <span class="num">01 · PRIMARY</span>
+          <h3>EvidenceMatrix</h3>
+          <p>Belegmatrix aus CSV, Lückenliste und Fälligkeiten. Gratis mit 5 Zeilen, Pro mit unbegrenzten Zeilen als lokalem Schalter.</p>
+          <p style="margin-top:16px"><a class="btn ghost" href="evidencematrix/em-tool.html">Direkt nutzen</a></p>
+        </article>
+        <article class="card">
+          <span class="num">02 · QR-BILLS</span>
+          <h3>QRWerk</h3>
+          <p>Stapelweise QR-Rechnungen nach SIX IG QR-bill v2.4. Strukturierte Adressen, QRR-Prüfung und Druckmodul – lokal im Browser.</p>
+          <p style="margin-top:16px"><a class="btn ghost" href="tool.html">Direkt nutzen</a></p>
+        </article>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Wissen (kostenlos)</h2>
-      <p class="sub">Kurze Anleitungen zu den häufigsten Fragen – ohne Werbung, ohne Tracking.</p>
-      <ul>
-        <li><a href="https://phil-antrope.github.io/qrwerk/wissen/qr-iban-oder-iban.html">QR-IBAN oder normale IBAN?</a></li>
-        <li><a href="https://phil-antrope.github.io/qrwerk/wissen/qr-bill-adressformat-2026.html">Neues Adressformat ab 14.11.2026</a></li>
-        <li><a href="https://phil-antrope.github.io/qrwerk/wissen/csv-zu-qr-bill.html">QR-Rechnungen aus CSV in Stapeln</a></li>
-      </ul>
+    <section class="section dark">
+      <div class="wrap center">
+        <span class="eyebrow" style="color:#7fd4b3">Keine Ausreden</span>
+        <h2>Was beide verbindet</h2>
+        <p class="lead" style="color:#c6dad1">Keine Cloud. Keine Konten. Keine Werbung. Nur Dateien, die in deinem Browser bleiben.</p>
+        <div class="pillrow">
+          <span>Kein Upload</span><span>Kein Konto</span><span>Keine Cookies</span><span>Kein Tracking</span><span>Keine externen Ressourcen</span>
+        </div>
+      </div>
     </section>
 
-    <section class="card tonal">
-      <h2>Auch interessant: EvidenceMatrix</h2>
-      <p class="sub">Aus deiner eigenen CSV-Liste eine druckbare Belegmatrix erstellen – mit
-        Lückenliste und Fälligkeiten. Ebenfalls 100 % lokal im Browser, ohne Upload, Konto oder Cookies.</p>
-      <p><a href="evidencematrix/"><button type="button">EvidenceMatrix öffnen</button></a>
-        <a href="evidencematrix/em-tool.html"><button type="button" class="ghost">Tool direkt starten</button></a></p>
-      <p class="hint">Kein ISO-Produkt, keine Zertifizierung, keine Beratung und keine Garantie
-        für Auditannahme. Gratis testen; Pro einmalig CHF 39 über Gumroad.</p>
+    <section class="wrap section">
+      <div class="center">
+        <span class="eyebrow">So funktioniert's</span>
+        <h2>In drei Schritten</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>CSV vorbereiten</h3><p>Eigene Liste mit den benötigten Spalten erstellen – Trennzeichen wählbar.</p></div>
+        <div class="step"><span class="n">2</span><h3>Im Browser analysieren</h3><p>Stichtag und Fenster wählen. Die Prüfung läuft lokal auf deinem Gerät.</p></div>
+        <div class="step"><span class="n">3</span><h3>Drucken oder exportieren</h3><p>A4-Bericht, HTML oder CSV – ohne Umweg über einen fremden Server.</p></div>
+      </div>
+      <p class="notice"><strong>Bewusst ehrlich:</strong> Keine Zertifizierung, keine Beratung, keine Garantie für Bank- oder Auditannahme. QRWerk ist kein SIX-Produkt; EvidenceMatrix ist kein ISO-Produkt.</p>
     </section>
 
-    <section class="card">
-      <h2>Preise</h2>
-      <p class="sub">Kostenlos: 5 QR-Bills pro Vorgang. QRWerk Pro: CHF 39 einmalig mit
-        unbegrenzten Stapeln, lokalen Vorlagen, Validierungsbericht als CSV/JSON und
-        Drucklabels auf DE/FR/IT/EN/RM. Kein XLSX-Import. Das Drucklayout ist verbessert,
-        aber weiterhin nicht vollständig SIX-konform (keine echte Perforation).</p>
-      <p class="hint">Zahlung und Download laufen über Gumroad; der Checkout zeigt den
-        Endbetrag inkl. allfälliger MWST/Abgaben. Auf dieser Seite werden keine Zahlungsdaten
-        erfasst. QRWerk ist kein SIX-Produkt und nicht zertifiziert.</p>
+    <section class="wrap section tight" id="preise">
+      <div class="center"><span class="eyebrow">Preise</span><h2>Einmalig statt Abo</h2></div>
+      <div class="price">
+        <div class="plan">
+          <span class="small">EvidenceMatrix Pro</span>
+          <div class="amount">CHF 39</div>
+          <p>Unbegrenzte Zeilen via lokalem Schalter, alle Exporte, Nutzungshinweise in der ZIP.</p>
+          <ul><li>Kein Lizenzserver</li><li>Kein Abo</li><li>Zahlung über Gumroad</li></ul>
+          <p style="margin-top:18px"><a class="btn ghost" href="https://1502003004208.gumroad.com/l/evidencematrix">Pro kaufen</a></p>
+        </div>
+        <div class="plan hi">
+          <span class="small">QRWerk Pro</span>
+          <div class="amount">CHF 39</div>
+          <p>Unbegrenzte Stapel, lokale Vorlagen, Validierungsbericht und Labels in fünf Sprachen.</p>
+          <ul><li>SPC 0200 · SIX v2.4</li><li>Kein XLSX-Import</li><li>Zahlung über Gumroad</li></ul>
+          <p style="margin-top:18px"><a class="btn ghost" href="https://1502003004208.gumroad.com/l/focvs" style="background:#fff;color:var(--dark)">Pro kaufen</a></p>
+        </div>
+      </div>
+      <p class="small center" style="margin-top:16px">Der Checkout zeigt den Endbetrag inkl. allfälliger MWST/Abgaben. Auf diesen Seiten werden keine Zahlungsdaten erfasst.</p>
     </section>
 
-    <section class="card">
-      <h2>Häufige Fragen</h2>
-      <h3>Werden meine Kundendaten hochgeladen?</h3>
-      <p>Nein. Parsing, Prüfung, QR-Erzeugung und Druck laufen im Browser. Es gibt keine
-        externen Skripte und keine Analyse.</p>
-      <h3>Ist das offiziell zertifiziert?</h3>
-      <p>Nein. Es ist ein unabhängiges Tool. Vor produktivem Einsatz bitte die aktuelle
-        SIX-Spezifikation prüfen und einige Rechnungen mit der Bank testen.</p>
-      <h3>Kann ich es kommerziell nutzen?</h3>
-      <p>Ja. Die Gratisversion ist kostenlos nutzbar; die Pro-Datei ist über Gumroad
-        erhältlich. Es gibt keinen technischen Lizenzserver und keine Datenübertragung.
-        Es wird keine Rechts- oder Steuerberatung angeboten.</p>
-      <h3>Wie erkenne ich alte QR-Bills mit ungültigem Adressformat?</h3>
-      <p>Scanne den QR-Code: In Zeile 5 steht <strong>S</strong> für strukturiert oder
-        <strong>K</strong> für die alte kombinierte Adresse. Seit 14. November 2026 sind nur
-        noch strukturierte Adressen erlaubt. Massgeblich ist die SIX-Spezifikation; teste
-        einen gedruckten Beleg mit deiner Bank.</p>
-      <h3>Wann brauche ich eine QR-IBAN?</h3>
-      <p>Die QR-IBAN gehört zur QRR-Referenz und ist nur für CHF-Zahlungen vorgesehen.
-        Ohne QRR – und bei SCOR/RF-Referenzen – wird die normale IBAN verwendet. QRWerk
-        prüft die Kombination vor dem Druck.</p>
+    <section class="wrap section" id="faq">
+      <div class="center"><span class="eyebrow">Fragen</span><h2>Häufige Fragen</h2></div>
+      <div style="margin-top:28px">
+        <details><summary>Werden Daten hochgeladen?</summary><p>Nein. Parsing, Prüfung, QR-Erzeugung und Druck laufen im Browser. Es gibt keine externen Skripte und keine Analyse.</p></details>
+        <details><summary>Sind die Tools offiziell zertifiziert?</summary><p>Nein. QRWerk ist kein Produkt der SIX Group; EvidenceMatrix ist kein ISO-27001-Produkt. Beide Tools sind unabhängige, lokale Werkzeuge ohne Konformitätszusage.</p></details>
+        <details><summary>Wie aktiviere ich Pro?</summary><p>Über einen lokalen Schalter in der gelieferten ZIP-Datei: <code>?pro=1</code>. Kein Konto, kein Lizenzserver, keine Datenübertragung.</p></details>
+        <details><summary>Was kostet die Nutzung?</summary><p>Die Gratisversionen sind kostenlos. Die Pro-Dateien kosten jeweils CHF 39 einmalig über Gumroad – ohne Abo.</p></details>
+      </div>
     </section>
   </main>
 
   <footer>
-    <span>QRWerk · anonymes Handelsbranding</span>
-    <span>Keine externen Ressourcen · keine Datenübertragung</span>
-    <span><a href="https://phil-antrope.github.io/qrwerk/rechtliches/nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="https://phil-antrope.github.io/qrwerk/rechtliches/widerruf.html">Widerruf</a></span>
+    <div class="footer-inner">
+      <span>PROJECT 10 MILLION · lokal &amp; anonym</span>
+      <span><a href="evidencematrix/">EvidenceMatrix</a> · <a href="tool.html">QRWerk Tool</a></span>
+      <span><a href="rechtliches/nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="rechtliches/widerruf.html">Widerruf</a> · <a href="https://1502003004208.gumroad.com/anbieterangaben">Anbieterangaben</a></span>
+    </div>
   </footer>
 </body>
 </html>
