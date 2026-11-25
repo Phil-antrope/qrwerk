@@ -7,10 +7,10 @@ Lokaler, kostenloser Generator für Schweizer QR-Rechnungen (Swiss Payments Code
 Keine Installation, kein Server, kein Build:
 
 ```
-open index.html
+open tool.html
 ```
 
-Oder im lokalen Browser `index.html` öffnen. Alles läuft clientseitig; es werden keine Daten gesendet.
+Oder im lokalen Browser `tool.html` öffnen. `index.html` ist die Landingpage ohne Tool-Logik. Alles läuft clientseitig; es werden keine Daten gesendet.
 
 ## Funktionen
 
@@ -25,10 +25,11 @@ Oder im lokalen Browser `index.html` öffnen. Alles läuft clientseitig; es werd
 
 ## Pro-Funktionen (vorbereitet, nicht verkauft)
 
-Diese Funktionen sind im lokalen MVP enthalten, aber **nicht verkauft, nicht veröffentlicht und nicht abgerechnet**:
-es gibt keinen Preis, keinen Zahlungsbeleg, kein Konto und keinen Lizenzserver.
+Diese Funktionen sind im lokalen MVP enthalten. Die vorbereitete Pro-Datei nutzt denselben
+lokalen Schalter; es gibt im Tool kein Konto, keine Abrechnung und keinen Lizenzserver. Preis,
+Zahlungsbeleg und Veröffentlichung liegen ausschliesslich beim Verkäuferkonto des Owners.
 
-- **Demo/Pro-Modus:** Checkbox im Oberbereich oder `index.html?pro=1` erlaubt unbegrenzte Stapel.
+- **Demo/Pro-Modus:** Checkbox im Oberbereich oder `tool.html?pro=1` erlaubt unbegrenzte Stapel.
   Standard bleibt das Gratislimit von 5 QR-Bills pro Vorgang. Der Schalter ist rein lokal; kein Login, kein Kauf, keine Zahlung.
 - **Validierungsbericht:** CSV oder JSON wird über einen clientseitigen Blob direkt heruntergeladen.
   Kein Upload, keine Daten an Dritte. CSV-Werte werden gegen Tabellen-Formeln abgesichert.
