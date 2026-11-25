@@ -23,11 +23,11 @@ Oder im lokalen Browser `tool.html` öffnen. `index.html` ist die Landingpage oh
 - Harte Fairness-Grenze: 5 QR-Bills pro Vorgang im kostenlosen Modus
 - Kein Tracking, keine Cookies, keine externen Ressourcen
 
-## Pro-Funktionen (vorbereitet, nicht verkauft)
+## Pro-Funktionen (in der Pro-Datei)
 
-Diese Funktionen sind im lokalen MVP enthalten. Die vorbereitete Pro-Datei nutzt denselben
-lokalen Schalter; es gibt im Tool kein Konto, keine Abrechnung und keinen Lizenzserver. Preis,
-Zahlungsbeleg und Veröffentlichung liegen ausschliesslich beim Verkäuferkonto des Owners.
+Diese Funktionen sind in der Pro-Datei enthalten. Sie nutzen denselben lokalen Schalter; es gibt
+im Tool kein Konto, keine Abrechnung und keinen Lizenzserver. Preis, Zahlungsbeleg und
+Veröffentlichung liegen ausschliesslich beim Verkäuferkonto des Owners.
 
 - **Demo/Pro-Modus:** Checkbox im Oberbereich oder `tool.html?pro=1` erlaubt unbegrenzte Stapel.
   Standard bleibt das Gratislimit von 5 QR-Bills pro Vorgang. Der Schalter ist rein lokal; kein Login, kein Kauf, keine Zahlung.
@@ -58,7 +58,7 @@ Gratis-/Demo-Modus, CSV-/JSON-Bericht, lokale Vorlagen und dreisprachige Druckla
   Exakte Annex-C-Wortlaute/Platzierung wurden nicht bildhaft verifiziert. Die Ruhezone beträgt
   4 Module (Minimum nach 6.4.1), nicht die empfohlenen 5 mm; der Code wird als SVG auf 46 mm inkl.
   Ruhezone skaliert, die Modulfläche ist daher kleiner als 46 mm.
-- Keine XLSX-Unterstützung (nur CSV; XLSX ist für Pro geplant).
+- Keine XLSX-Unterstützung (nur CSV; auch in der Pro-Version kein XLSX-Import).
 - Vorlagen liegen nur im lokalen `localStorage`; keine Synchronisierung, kein Login, kein Upload.
 - Keine Rechts-/Steuerberatung; keine Garantie für Bankannahme.
 - Die SIX IG v2.4-PDF wurde geprüft (siehe `SIX_v2.4_pruefung.md`); offen bleiben
@@ -72,5 +72,5 @@ Gratis-/Demo-Modus, CSV-/JSON-Bericht, lokale Vorlagen und dreisprachige Druckla
 
 ## Status
 
-Prototyp, **nicht veröffentlicht**. Pro-Funktionen sind vorbereitet, nicht verkauft.
-Keine echten Nutzer, kein Umsatz, kein Zahlungsbeleg, keine Marktvalidierung.
+Tool und Pro-Version sind **veröffentlicht**. Es gibt weiterhin keine echten Nutzer,
+keinen Umsatz, keinen Zahlungsbeleg und keine Marktvalidierung.
