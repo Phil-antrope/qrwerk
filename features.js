@@ -163,23 +163,41 @@
 
   // --- Multilingual print labels --------------------------------------------
 
-  // [P] Annex C wording/placement was checked as text only; figure-based
-  // details and official typography were not verified. Simplified MVP layout.
+  // Terms follow the multilingual glossary of SIX IG v2.4 (DE/FR/IT/EN).
+  // [P] Romansh terms are supplied as an unverified approximation; the exact
+  // Annex C wording was not checked against the figure-based original.
+  // Placement and typography remain a simplified MVP layout (see src/print.js).
   var LABELS = {
     de: {
       receipt: 'Empfangsschein', paymentPart: 'Zahlteil', acceptancePoint: 'Annahmestelle',
-      amount: 'Betrag', currency: 'Währung', reference: 'Referenz', account: 'Konto / IBAN',
-      payableBy: 'Zahlbar durch', payableTo: 'Zahlbar an', message: 'Nachricht'
+      amount: 'Betrag', currency: 'Währung', reference: 'Referenz',
+      account: 'Konto / Zahlbar an', payableBy: 'Zahlbar durch', payableTo: 'Zahlbar an',
+      additionalInformation: 'Zusätzliche Informationen', message: 'Nachricht'
     },
     fr: {
       receipt: 'Récépissé', paymentPart: 'Partie paiement', acceptancePoint: 'Point d’acceptation',
-      amount: 'Montant', currency: 'Devise', reference: 'Référence', account: 'Compte / IBAN',
-      payableBy: 'Payable par', payableTo: 'Payable à', message: 'Message'
+      amount: 'Montant', currency: 'Devise', reference: 'Référence',
+      account: 'Compte / Payable à', payableBy: 'Payable par', payableTo: 'Payable à',
+      additionalInformation: 'Informations supplémentaires', message: 'Message'
     },
     it: {
       receipt: 'Ricevuta', paymentPart: 'Parte di pagamento', acceptancePoint: 'Punto di accettazione',
-      amount: 'Importo', currency: 'Valuta', reference: 'Riferimento', account: 'Conto / IBAN',
-      payableBy: 'Pagabile da', payableTo: 'Pagabile a', message: 'Messaggio'
+      amount: 'Importo', currency: 'Valuta', reference: 'Riferimento',
+      account: 'Conto / Pagabile a', payableBy: 'Pagabile da', payableTo: 'Pagabile a',
+      additionalInformation: 'Informazioni supplementari', message: 'Messaggio'
+    },
+    en: {
+      receipt: 'Receipt', paymentPart: 'Payment part', acceptancePoint: 'Acceptance point',
+      amount: 'Amount', currency: 'Currency', reference: 'Reference',
+      account: 'Account / Payable to', payableBy: 'Payable by', payableTo: 'Payable to',
+      additionalInformation: 'Additional information', message: 'Message'
+    },
+    // [P] Unverified Romansh wording – do not rely on it without checking Annex C.
+    rm: {
+      receipt: 'Quittanza', paymentPart: 'Partida da pajament', acceptancePoint: 'Post da accettaziun',
+      amount: 'Import', currency: 'Valuta', reference: 'Referenza',
+      account: 'Conto / Pajabel a', payableBy: 'Pajabel da', payableTo: 'Pajabel a',
+      additionalInformation: 'Infurzias supplementaras', message: 'Messagi'
     }
   };
 
@@ -189,6 +207,7 @@
   }
 
   return {
+    PRINT_LANGUAGES: Object.keys(LABELS),
     FREE_LIMIT: FREE_LIMIT,
     TEMPLATE_KEY: TEMPLATE_KEY,
     MAX_PATTERNS: MAX_PATTERNS,

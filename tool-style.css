@@ -125,33 +125,67 @@ th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spa
 .status-error { color: var(--red); font-weight: 600; }
 
 .slips { display: grid; gap: 20px; }
+/* SIX IG v2.4: receipt LEFT of payment part, 62 + 148 = 210 mm, height 105 mm.
+   [P] Browser PDF cannot create a real perforation; dashed lines and corner
+   cut marks are the closest local approximation. Typography follows 3.4
+   (Arial/Helvetica/Liberation Sans, 6-11 pt, no italic/underline). */
 .slip {
+  position: relative;
   width: 210mm;
   max-width: 100%;
   min-height: 105mm;
   margin: 0 auto;
-  border: 1px solid #222;
-  background: white;
+  background: #fff;
   display: grid;
-  /* SIX IG v2.4, 3.3: receipt 62 mm + payment part 148 mm = 210 mm. */
-  grid-template-columns: 148mm 62mm;
-  gap: 0;
-  padding: 0;
+  grid-template-columns: 62mm 148mm;
   color: #000;
-  font-size: 9pt;
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+  font-size: 10pt;
+  font-style: normal;
+  border-top: 1px dashed #333;
 }
-.payment { display: grid; grid-template-columns: 46mm 1fr; gap: 5mm; align-content: start; }
-.slip-title { grid-column: 1 / -1; margin: 0 0 2mm; font-size: 8pt; text-transform: uppercase; }
+.cut-marks { position: absolute; inset: 0; pointer-events: none; }
+.cut-marks i { position: absolute; width: 3mm; height: 0; border-top: 1px solid #333; }
+.cut-marks i:nth-child(1) { top: 0; left: 0; }
+.cut-marks i:nth-child(2) { top: 0; right: 0; }
+.cut-marks i:nth-child(3) { bottom: 0; left: 0; }
+.cut-marks i:nth-child(4) { bottom: 0; right: 0; }
+.receipt, .payment {
+  display: grid;
+  row-gap: 5mm; /* SIX IG v2.4, 3.5/3.6: 5 mm between sections. */
+  padding: 4mm 5mm;
+  min-width: 0;
+}
+.receipt { grid-template-rows: auto 1fr auto auto; border-right: 1px dashed #333; }
+.payment { grid-template-rows: auto auto auto 1fr; }
+.slip-title { margin: 0; font-size: 11pt; font-weight: 700; line-height: 1.1; }
+.section { min-width: 0; }
+.qr {
+  display: inline-block;
+  padding: var(--qr-quiet-mm, 5mm); /* >= 5 mm and >= 4 modules (set per QR version). */
+  background: #fff;
+  line-height: 0;
+}
 .qr svg { display: block; width: 46mm; height: 46mm; }
-.payinfo dl { margin: 0; display: grid; grid-template-columns: 26mm 1fr; gap: 2mm 3mm; }
-.payinfo dt { color: #333; font-size: 7pt; text-transform: uppercase; }
-.payinfo dd { margin: 0; font-weight: 600; word-break: break-word; }
-.payinfo dd.blank { min-height: 3mm; border-bottom: 1px solid #888; }
-.payinfo .amount { font-size: 14pt; font-weight: 700; }
-.receipt { border-left: 1px dashed #555; padding-left: 4mm; }
-.receipt h4 { margin: 0 0 3mm; font-size: 8pt; }
-.receipt .line { margin-bottom: 2mm; word-break: break-word; }
-.receipt .amount { margin-top: 6mm; font-size: 12pt; font-weight: 700; }
+.fields {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  column-gap: 2mm;
+  row-gap: 1mm;
+  align-content: start;
+}
+.receipt .fields { grid-template-columns: 22mm 1fr; }
+.section-head { font-size: 8pt; font-weight: 700; }
+.receipt .section-head { font-size: 6pt; }
+.fields dd { margin: 0; font-size: 10pt; word-break: break-word; }
+.receipt .fields dd { font-size: 8pt; }
+.fields dd.value { font-weight: 700; }
+.fields .payable-to { font-weight: 400; }
+.fields dd.blank-field, .blank-field { min-height: 3mm; border-bottom: 1px solid #000; }
+.fields dd.no-payment { font-weight: 700; }
+.acceptance-section .section-head { font-size: 6pt; font-weight: 700; }
+.acceptance-section .blank-field { margin-top: 2mm; height: 6mm; border-bottom: 1px solid #000; }
 
 footer {
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
@@ -172,6 +206,6 @@ footer {
   .card { border: 0; padding: 0; margin: 0; }
   #preview-card h2, #preview-card .sub { display: none; }
   .slips { display: block; }
-  .slip { break-after: page; page-break-after: always; border: 0; margin: 0; }
+  .slip { break-after: page; page-break-after: always; border: 0; border-top: 1px dashed #333; margin: 0; }
   .slip:last-child { break-after: auto; page-break-after: auto; }
 }

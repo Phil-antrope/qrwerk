@@ -3,6 +3,7 @@
 
   var core = window.QRWerkCore;
   var features = window.QRWerkFeatures;
+  var print = window.QRWerkPrint;
   core.configureQRCode(window.qrcode); // Coding type 1 = UTF-8 bytes in the QR matrix.
   var $ = function (id) { return document.getElementById(id); };
   var rows = [];
@@ -229,75 +230,8 @@
     $('export-json').disabled = rows.length === 0;
   }
 
-  function qrSvg(payload) {
-    var qr = window.qrcode(0, 'M');
-    qr.addData(payload);
-    qr.make();
-    var count = qr.getModuleCount();
-    var quiet = 4;
-    var total = count + quiet * 2;
-    var size = 190;
-    var scale = size / total;
-    var unit = (count * scale) / 46; // Swiss-cross dimensions are relative to a 46 mm symbol
-    var out = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + size + ' ' + size + '" shape-rendering="crispEdges">'];
-    out.push('<rect width="' + size + '" height="' + size + '" fill="#fff"/>');
-    for (var r = 0; r < count; r++) {
-      for (var c = 0; c < count; c++) {
-        if (qr.isDark(r, c)) {
-          out.push('<rect x="' + ((c + quiet) * scale).toFixed(2) + '" y="' + ((r + quiet) * scale).toFixed(2) +
-            '" width="' + scale.toFixed(2) + '" height="' + scale.toFixed(2) + '" fill="#000"/>');
-        }
-      }
-    }
-    var mid = size / 2;
-    out.push('<rect x="' + (mid - 3.5 * unit) + '" y="' + (mid - 3.5 * unit) + '" width="' + (7 * unit) + '" height="' + (7 * unit) + '" fill="#fff"/>');
-    out.push('<rect x="' + (mid - 3 * unit) + '" y="' + (mid - 3 * unit) + '" width="' + (6 * unit) + '" height="' + (6 * unit) + '" fill="#000000"/>');
-    out.push('<rect x="' + (mid - 0.6 * unit) + '" y="' + (mid - 2.1 * unit) + '" width="' + (1.2 * unit) + '" height="' + (4.2 * unit) + '" fill="#fff"/>');
-    out.push('<rect x="' + (mid - 2.1 * unit) + '" y="' + (mid - 0.6 * unit) + '" width="' + (4.2 * unit) + '" height="' + (1.2 * unit) + '" fill="#fff"/>');
-    out.push('</svg>');
-    return out.join('');
-  }
-
   function slipHtml(payload, check, index) {
-    var f = check.fields;
-    var L = features.labels(printLang);
-    var esc = function (s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-      });
-    };
-    var amount = f[18] || '–';
-    var currency = f[19] || '–';
-    var payTo = [f[5], [f[6], f[7]].filter(Boolean).join(' '), [f[8], f[9]].filter(Boolean).join(' '), f[10]]
-      .filter(Boolean).join(', ');
-    var payableBy = [f[21], [f[22], f[23]].filter(Boolean).join(' '), [f[24], f[25]].filter(Boolean).join(' '), f[26]]
-      .filter(Boolean).join(', ') || '–';
-    var reference = f[28] === 'NON' ? '–' : [f[28], f[29]].filter(Boolean).join(' ');
-    return '<article class="slip" lang="' + esc(printLang) + '">' +
-      '<div class="payment">' +
-        '<h4 class="slip-title">' + esc(L.paymentPart) + '</h4>' +
-        '<div class="qr">' + qrSvg(payload) + '</div>' +
-        '<div class="payinfo"><dl>' +
-          '<dt>' + esc(L.account) + '</dt><dd>' + esc(f[3]) + '</dd>' +
-          '<dt>' + esc(L.reference) + '</dt><dd>' + esc(reference) + '</dd>' +
-          '<dt>' + esc(L.payableTo) + '</dt><dd>' + esc(payTo) + '</dd>' +
-          '<dt>' + esc(L.payableBy) + '</dt><dd>' + esc(payableBy) + '</dd>' +
-          '<dt>' + esc(L.acceptancePoint) + '</dt><dd class="blank"></dd>' +
-          '<dt>' + esc(L.message) + '</dt><dd>' + esc(f[30] || '–') + '</dd>' +
-          '<dt>' + esc(L.currency) + '</dt><dd>' + esc(currency) + '</dd>' +
-          '<dt>' + esc(L.amount) + '</dt><dd class="amount">' + esc(amount) + '</dd>' +
-        '</dl></div>' +
-      '</div>' +
-      '<div class="receipt">' +
-        '<h4>' + esc(L.receipt) + ' · ' + (index + 1) + '</h4>' +
-        '<div class="line">' + esc(payTo) + '</div>' +
-        '<div class="line">' + esc(f[3]) + '</div>' +
-        '<div class="line">' + esc(reference) + '</div>' +
-        '<div class="line">' + esc(L.acceptancePoint) + '</div>' +
-        '<div class="line">' + esc(payableBy) + '</div>' +
-        '<div class="line amount">' + esc(amount) + ' ' + esc(currency) + '</div>' +
-      '</div>' +
-    '</article>';
+    return print.slipHtml(payload, check, index, printLang, window.qrcode);
   }
 
   function generate() {

@@ -6,10 +6,13 @@
  * field order per SPC v2.x. Not a substitute for the official specification.
  */
 (function (root, factory) {
-  var api = factory();
+  var countries = (typeof module === 'object' && module.exports)
+    ? require('./countries.js')
+    : root.QRWerkCountries;
+  var api = factory(countries);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.QRWerkCore = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (countries) {
   'use strict';
 
   // Recursive modulo-10 carry-over table (Swiss QRR/ESR check digit, Annex B).
@@ -30,6 +33,15 @@
     name: 70, street: 70, buildingNo: 16, postalCode: 16, town: 35,
     country: 2, message: 140, billInformation: 140, altScheme: 100
   };
+
+  // SIX IG v2.4, 4.4: 0.00 + this exact upper-case message means
+  // "DO NOT USE FOR PAYMENT". Any other message is a validation error.
+  var NO_PAYMENT_MESSAGE = 'DO NOT USE FOR PAYMENT';
+
+  // Lines 32-34 require an agreed coding syntax and the Annex D release
+  // process with SIX. Until that exists they are disabled, not silently
+  // emitted with invented syntax.
+  var OPTIONAL_FIELDS_ENABLED = false;
 
   // SIX IG v2.4, 4.1.1: U+0020-007E, U+00A0-00FF, U+0100-017F,
   // U+0218-021B (ș/ț) and the euro sign U+20AC. Disallowed characters are removed.
@@ -154,6 +166,16 @@
     return v;
   }
 
+  // SIX IG v2.4, 4.2.2: country is ISO 3166-1 alpha-2. Local vendored list.
+  function checkCountry(value, field, errors) {
+    var raw = limit('country', value, errors).toUpperCase();
+    if (!countries || !countries.isValidCountry(raw)) {
+      errors.push(field + '-Land: kein gültiger ISO-3166-1-Code (2 Buchstaben)');
+      return raw;
+    }
+    return countries.normalizeCountry(raw);
+  }
+
   /**
    * Build the positional SPC payload (34 fields, empty fields retained).
    * record: {
@@ -202,7 +224,7 @@
     }
 
     var amount = normalizeAmount(r.amount);
-    if (amount === null) errors.push('Betrag muss eine positive Zahl mit maximal 2 Dezimalstellen sein');
+    if (amount === null) errors.push('Betrag muss eine Zahl mit maximal 2 Dezimalstellen sein');
     if (amount !== '' && Number(amount) > 999999999.99) errors.push('Betrag über dem Maximum');
 
     var currency = compact(r.currency || 'CHF').toUpperCase();
@@ -211,8 +233,7 @@
     var creditor = r.creditor || {};
     var creditorName = limit('name', creditor.name, errors);
     if (creditorName === '') errors.push('Gläubiger-Name fehlt');
-    var creditorCountry = limit('country', creditor.country || 'CH', errors).toUpperCase();
-    if (creditorCountry.length !== 2) errors.push('Gläubiger-Land muss 2 Buchstaben haben');
+    var creditorCountry = checkCountry(creditor.country || 'CH', 'Gläubiger', errors);
     var creditorStreet = limit('street', creditor.street, errors);
     var creditorBuilding = limit('buildingNo', creditor.buildingNo, errors);
     var creditorPostal = limit('postalCode', creditor.postalCode, errors);
@@ -234,21 +255,29 @@
     }
     if (debtorName || debtorStreet || debtorBuilding || debtorPostal || debtorTown || debtorCountry) {
       debtorType = 'S';
-      if (debtorCountry.length !== 2) errors.push('Debitor-Land muss 2 Buchstaben haben');
+      if (!countries || !countries.isValidCountry(debtorCountry)) {
+        errors.push('Debitor-Land: kein gültiger ISO-3166-1-Code (2 Buchstaben)');
+      }
       if (debtorName === '' || debtorPostal === '' || debtorTown === '') {
         errors.push('Debitor-Adresse (Typ S) verlangt Name, PLZ und Ort');
       }
     }
 
     var message = limit('message', r.message, errors);
-    var billInfo = limit('billInformation', r.billInformation, errors);
-    // SIX IG v2.4, 4.3.3: unstructured message + billing info together max. 140.
-    if (message.length + billInfo.length > 140) {
-      errors.push('Nachricht + Billing information: maximal 140 Zeichen zusammen');
-      billInfo = billInfo.slice(0, Math.max(0, 140 - message.length));
+    if (!OPTIONAL_FIELDS_ENABLED && compact(r.billInformation) !== '') {
+      errors.push('Billing information ist deaktiviert: Syntax/Freigabe nach Annex D nicht implementiert');
     }
-    var alt1 = limit('altScheme', r.altScheme1, errors);
-    var alt2 = limit('altScheme', r.altScheme2, errors);
+    if (!OPTIONAL_FIELDS_ENABLED &&
+        (compact(r.altScheme1) !== '' || compact(r.altScheme2) !== '')) {
+      errors.push('Alternative procedures sind deaktiviert: Syntax/Freigabe nach Annex D nicht implementiert');
+    }
+    // SIX IG v2.4, 4.4: 0.00 is only valid together with this exact message.
+    if (amount === '0.00' && message !== NO_PAYMENT_MESSAGE) {
+      errors.push('Betrag 0.00 verlangt exakt "' + NO_PAYMENT_MESSAGE + '" (§4.4)');
+    }
+    if (amount !== '0.00' && message === NO_PAYMENT_MESSAGE) {
+      errors.push('"' + NO_PAYMENT_MESSAGE + '" verlangt Betrag 0.00 (§4.4)');
+    }
 
     var fields = [
       'SPC',                       // 01 QRType
@@ -278,9 +307,11 @@
       'EPD'                        // 31 Trailer
     ];
 
-    if (billInfo !== '') fields.push(billInfo);       // 32
-    if (alt1 !== '') fields.push(alt1);               // 33
-    if (alt2 !== '') fields.push(alt2);               // 34
+    if (OPTIONAL_FIELDS_ENABLED) {
+      if (compact(r.billInformation) !== '') fields.push(sanitize(r.billInformation)); // 32
+      if (compact(r.altScheme1) !== '') fields.push(sanitize(r.altScheme1));           // 33
+      if (compact(r.altScheme2) !== '') fields.push(sanitize(r.altScheme2));           // 34
+    }
 
     var originalMessage = compact(r.message);
     if (sanitize(originalMessage) !== originalMessage) {
@@ -384,8 +415,11 @@
   return {
     ALLOWED_CHARACTERS: ALLOWED.source,
     LIMITS: LIMITS,
+    NO_PAYMENT_MESSAGE: NO_PAYMENT_MESSAGE,
+    OPTIONAL_FIELDS_ENABLED: OPTIONAL_FIELDS_ENABLED,
     compact: compact,
     sanitize: sanitize,
+    checkCountry: checkCountry,
     normalizeIBAN: normalizeIBAN,
     ibanCheck: ibanCheck,
     isQRIBAN: isQRIBAN,
