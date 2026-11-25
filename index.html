@@ -3,8 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QRWerk – QR-Rechnungen im Stapel, lokal im Browser</title>
-  <meta name="description" content="CSV rein, geprüfte Schweizer QR-Rechnungen raus. Funktionsfähiger MVP mit vereinfachtem Drucklayout. Kein Upload, kein Konto.">
+  <title>QRWerk – Schweizer QR-Rechnungen im Stapel, lokal im Browser</title>
+  <meta name="description" content="CSV-Datei zu geprüften Schweizer QR-Bills: IBAN, QR-IBAN und Referenz prüfen, SPC 0200 nach SIX v2.4. 100 % lokal im Browser, ohne Upload und ohne Konto. Gratis mit 5 QR-Bills, Pro CHF 39.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/">
+  <meta property="og:title" content="QRWerk – Schweizer QR-Rechnungen im Stapel">
+  <meta property="og:description" content="CSV rein, geprüfte QR-Bills raus. Lokal im Browser, ohne Upload und ohne Konto.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phil-antrope.github.io/qrwerk/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QRWerk",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Webbrowser",
+    "url": "https://phil-antrope.github.io/qrwerk/",
+    "description": "Erzeugt aus CSV geprüfte Schweizer QR-Bills mit SPC-0200-Payload nach SIX IG QR-bill v2.4. Läuft vollständig lokal im Browser, ohne Upload, Konto oder Cookies.",
+    "inLanguage": "de-CH",
+    "offers": {
+      "@type": "Offer",
+      "price": "39",
+      "priceCurrency": "CHF",
+      "url": "https://gumroad.com/l/focvs",
+      "description": "QRWerk Pro: unbegrenzte Stapel, lokale Vorlagen, Berichtsexport, DE/FR/IT-Labels. Einmalig, kein Abo."
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Werden meine Kundendaten hochgeladen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Parsing, Prüfung, QR-Erzeugung und Druck laufen im Browser. Es gibt keine externen Skripte und keine Analyse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist QRWerk offiziell zertifiziert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Es ist ein unabhängiges Tool, kein Produkt der SIX Group, ohne Zertifizierung und ohne Garantie für Bankannahme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet QRWerk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Gratisversion ist kostenlos und erlaubt 5 QR-Bills pro Vorgang. QRWerk Pro kostet CHF 39 einmalig über Gumroad, ohne Abo und ohne Lizenzserver."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie erkenne ich alte QR-Bills mit ungültigem Adressformat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scanne den QR-Code mit einer beliebigen Reader-App: In Zeile 5 steht S für strukturiert oder K für die alte, kombinierte Adresse. Seit dem 14. November 2026 sind nur noch strukturierte Adressen erlaubt. Prüfe die massgebliche SIX-Spezifikation und teste einen gedruckten Beleg mit deiner Bank."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wann brauche ich eine QR-IBAN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eine QR-IBAN gehört zur QRR-Referenz und ist nur für CHF-Zahlungen vorgesehen. Ohne QRR wird die normale IBAN verwendet; bei SCOR/RF-Referenzen ebenfalls. QRWerk prüft diese Kombination vor dem Druck."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="tool-style.css?v=2">
 </head>
 <body>
@@ -70,6 +144,15 @@
       <p>Ja. Die Gratisversion ist kostenlos nutzbar; die Pro-Datei ist über Gumroad
         erhältlich. Es gibt keinen technischen Lizenzserver und keine Datenübertragung.
         Es wird keine Rechts- oder Steuerberatung angeboten.</p>
+      <h3>Wie erkenne ich alte QR-Bills mit ungültigem Adressformat?</h3>
+      <p>Scanne den QR-Code: In Zeile 5 steht <strong>S</strong> für strukturiert oder
+        <strong>K</strong> für die alte kombinierte Adresse. Seit 14. November 2026 sind nur
+        noch strukturierte Adressen erlaubt. Massgeblich ist die SIX-Spezifikation; teste
+        einen gedruckten Beleg mit deiner Bank.</p>
+      <h3>Wann brauche ich eine QR-IBAN?</h3>
+      <p>Die QR-IBAN gehört zur QRR-Referenz und ist nur für CHF-Zahlungen vorgesehen.
+        Ohne QRR – und bei SCOR/RF-Referenzen – wird die normale IBAN verwendet. QRWerk
+        prüft die Kombination vor dem Druck.</p>
     </section>
   </main>
 
