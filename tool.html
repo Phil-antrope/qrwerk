@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QRWerk – Schweizer QR-Rechnungen im Stapel</title>
+  <meta name="description" content="QR-Rechnungen aus CSV stapelweise erstellen und prüfen. Läuft vollständig lokal im Browser. SPC 0200 nach SIX IG v2.4; Drucklayout vereinfacht.">
+  <link rel="stylesheet" href="tool-style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="mark">Q</span> QRWerk</div>
+    <div class="badges">
+      <span class="badge">100 % lokal</span>
+      <span class="badge">SPC 0200 · v2.4</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Aus CSV werden geprüfte QR-Rechnungen.</h1>
+      <p class="lead">Stapelweise, mit Prüfung von IBAN, QR-IBAN und Referenz – und ohne dass deine Kundendaten je den Browser verlassen.</p>
+      <p class="hint">Kostenlos: 5 QR-Bills pro Vorgang. Kein Konto. Kein Upload. Keine Cookies.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">1</span> Deine Zahlungsadresse</h2>
+      <p class="sub">Diese Angaben erscheinen auf allen QR-Bills des Stapels.</p>
+      <div class="grid">
+        <label>Name / Firma<input id="cr-name" value="" placeholder="Musterfirma GmbH"></label>
+        <label>Strasse<input id="cr-street" value="" placeholder="Musterstrasse"></label>
+        <label>Hausnummer<input id="cr-building" value="" placeholder="12"></label>
+        <label>PLZ<input id="cr-postal" value="" placeholder="8000"></label>
+        <label>Ort<input id="cr-town" value="" placeholder="Zürich"></label>
+        <label>Land<input id="cr-country" value="CH" maxlength="2"></label>
+        <label class="wide">IBAN / QR-IBAN<input id="cr-iban" value="" placeholder="CH93 0076 2011 6238 5295 7"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">2</span> CSV einfügen</h2>
+      <p class="sub">Spalten mit Semikolon, Komma oder Tabulator trennen. Erkannte Spalten: IBAN, Betrag, Währung,
+        Referenztyp, Referenz, Nachricht, Kunde, Kundenstrasse, Hausnummer, PLZ, Ort, Land.</p>
+      <textarea id="csv" rows="8" spellcheck="false" placeholder="IBAN;Betrag;Währung;Referenztyp;Referenz;Kunde;PLZ;Ort;Nachricht"></textarea>
+      <div class="actions">
+        <button id="sample" class="ghost" type="button">Beispieldaten laden</button>
+        <button id="parse" type="button">CSV prüfen</button>
+        <label class="file">Datei wählen<input id="file" type="file" accept=".csv,.txt,text/csv"></label>
+      </div>
+    </section>
+
+    <section class="card" id="result-card" hidden>
+      <h2><span class="step">3</span> Prüfergebnis</h2>
+      <div id="summary" class="summary"></div>
+      <div class="tablewrap">
+        <table id="rows">
+          <thead><tr><th>#</th><th>Empfänger</th><th>Betrag</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <button id="generate" type="button">QR-Bills erzeugen</button>
+      </div>
+      <p id="gen-note" class="hint"></p>
+    </section>
+
+    <section class="card" id="preview-card" hidden>
+      <h2><span class="step">4</span> Vorschau &amp; Druck</h2>
+      <p class="sub">Drucken im Browserdialog auf A4, 100 % Skalierung, Kopf- und Fusszeilen aus.</p>
+      <div id="slips" class="slips"></div>
+      <div class="actions no-print">
+        <button id="print" type="button">Drucken / als PDF speichern</button>
+      </div>
+    </section>
+
+    <section class="card tonal">
+      <h2>Was dieses Tool nicht ist</h2>
+      <ul>
+        <li>Keine Rechts- oder Steuerberatung und keine Garantie für die Bankannahme.</li>
+        <li>Das gedruckte Layout ist ein funktionsfähiger MVP, noch kein vollständig SIX-stylierter Zahlteil mit Registriermarks und Perforation.</li>
+        <li>Vor produktivem Einsatz die aktuelle SIX Implementation Guideline QR-bill v2.4 prüfen.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>QRWerk · anonymes Handelsbranding</span>
+    <span>Keine externen Skripte, keine Analyse, keine Datenübertragung.</span>
+  </footer>
+
+  <script src="qrcode.js"></script>
+  <script src="core.js"></script>
+  <script src="tool-app.js"></script>
+</body>
+</html>

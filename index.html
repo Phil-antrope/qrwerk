@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QRWerk – QR-Rechnungen im Stapel, lokal im Browser</title>
+  <meta name="description" content="CSV rein, geprüfte Schweizer QR-Rechnungen raus. Funktionsfähiger MVP mit vereinfachtem Drucklayout. Kein Upload, kein Konto.">
+  <link rel="stylesheet" href="tool-style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="mark">Q</span> QRWerk</div>
+    <div class="badges"><span class="badge">SPC 0200 · SIX v2.4</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>CSV rein. QR-Rechnungen raus.</h1>
+      <p class="lead">QRWerk erzeugt Schweizer QR-Bills stapelweise aus deiner Tabelle – prüft IBAN,
+        QR-IBAN und Referenz und meldet Fehler, bevor die Bank sie meldet.</p>
+      <p class="hint">Läuft vollständig in deinem Browser. Kein Upload. Kein Konto. Keine Cookies.</p>
+      <div class="actions">
+        <a href="tool.html"><button type="button">Tool kostenlos testen</button></a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Für wen?</h2>
+      <p class="sub">Für Selbständige, kleine Firmen und Vereine in der Schweiz und in Liechtenstein,
+        die regelmässig viele QR-Rechnungen aus einer Liste erstellen.</p>
+      <ul>
+        <li>Monatliche Rechnungen oder Mitgliederbeiträge aus einer Tabelle</li>
+        <li>Prüfung vor dem Druck statt Ablehnung an der Kasse</li>
+        <li>QR-IBAN und QRR-Referenz werden automatisch geprüft</li>
+        <li>Strukturierte Adressen gemäss SIX ab Version 2.3</li>
+      </ul>
+    </section>
+
+    <section class="card tonal">
+      <h2>Warum jetzt?</h2>
+      <p>Die SIX Implementation Guideline QR-bill v2.4 ist seit 14. November 2026 gültig.
+        Wer alte Vorlagen nutzt, riskiert Adressen im nicht mehr erlaubten Format. QRWerk
+        erzeugt von Grund auf strukturierte Adressen und prüft die Referenzlogik.</p>
+      <p class="hint">Quelle: SIX Payment Standards, Implementation Guidelines QR-bill v2.4.
+        QRWerk ist kein Produkt von SIX.</p>
+    </section>
+
+    <section class="card">
+      <h2>Preise</h2>
+      <p class="sub">Kostenlos: 5 QR-Bills pro Vorgang. Eine Pro-Lizenz mit höheren Stapeln,
+        XLSX-Import, Vorlagen und Validierungsbericht ist geplant – noch nicht käuflich.</p>
+      <p class="hint">Es gibt derzeit keinen Zahlungsanbieter und keine Kaufmöglichkeit.
+        Bitte keine Zahlungen leisten.</p>
+    </section>
+
+    <section class="card">
+      <h2>Häufige Fragen</h2>
+      <h3>Werden meine Kundendaten hochgeladen?</h3>
+      <p>Nein. Parsing, Prüfung, QR-Erzeugung und Druck laufen im Browser. Es gibt keine
+        externen Skripte und keine Analyse.</p>
+      <h3>Ist das offiziell zertifiziert?</h3>
+      <p>Nein. Es ist ein unabhängiges Tool. Vor produktivem Einsatz bitte die aktuelle
+        SIX-Spezifikation prüfen und einige Rechnungen mit der Bank testen.</p>
+      <h3>Kann ich es kommerziell nutzen?</h3>
+      <p>Das Tool ist kostenlos nutzbar; eine Lizenz für die Pro-Funktionen ist geplant.
+        Es wird keine Rechts- oder Steuerberatung angeboten.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>QRWerk · anonymes Handelsbranding</span>
+    <span>Keine externen Ressourcen · keine Datenübertragung</span>
+  </footer>
+</body>
+</html>
