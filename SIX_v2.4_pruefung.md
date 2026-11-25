@@ -1,12 +1,13 @@
 # QRWerk – technische Konformitätsprüfung gegen SIX IG QR-bill v2.4
 
-Datum: 25.11.2026 · Geprüfter Stand: MVP v0.1 in `10M/05_Produkt/qrwerk/` · Methode: statische Code-/CSS-Prüfung, specs-seitige Verifikation und Ausführen von `node tests/run.js` (20/20 grün).
+Datum: 25.11.2026 · Geprüfter Stand: MVP mit vorbereiteten Pro-Funktionen in `10M/05_Produkt/qrwerk/` · Methode: statische Code-/CSS-Prüfung, specs-seitige Verifikation und Ausführen von `node tests/run.js` (27/27 grün).
 
 ## Quellen und Vorgehen
 
 - Primär: offizielle PDF `ig-qr-bill-v2.4-en.pdf` (Version 2.4, 24.02.2026, gültig ab 14.11.2026). Der direkte `webfetch` lieferte nur `application/pdf`; der Text wurde über einen öffentlichen Text-Mirror (`r.jina.ai`, derselbe URL) extrahiert und abschnittweise gelesen. Kapitel-/Seitenangaben unten beziehen sich auf die offizielle PDF.
 - SIX-Übersichtsseite (Bestätigung von Zweck/Downloads) und Gardinova (nur als Signal, nicht als Normquelle).
 - Bekannte Grenze der Prüfung: Abbildungen (Annex B Figure 21/22, QR-Kreuz, Layout-Schemata) sind im extrahierten Text nicht als Bildwerte enthalten. Aussagen dazu sind mit `[P]` markiert. Es wurde kein physischer Druck-/Scanner-Test durchgeführt.
+- Die Belegspalten mit `Datei:Zeile` beziehen sich auf den Stand der Erstprüfung; durch die Pro-Vorbereitung haben sich einzelne Zeilennummern verschoben.
 
 ## Ergebnistabelle
 
@@ -39,13 +40,13 @@ Datum: 25.11.2026 · Geprüfter Stand: MVP v0.1 in `10M/05_Produkt/qrwerk/` · M
 | Zahlteil 148×105 mm + Empfangsschein 62×105 mm = 210×105 mm (§2.2/3.3) | Ja (behoben) | `style.css:125-131` | Vorher 148+52+10 mm Abstand+10 mm Padding = 220 mm; jetzt exakt 210 mm. | Hoch → behoben |
 | Perforation zwischen Zahlteil und Empfangsschein sowie zum Brief (§3.1/3.3) | Nein | `style.css:140` (nur gestrichelte CSS-Linie), `README.md:38` | Keine echte Perforation; Browser-PDF kann sie nicht erzeugen. | Hoch |
 | Registriermarks / Schnittmarken | Nein | `README.md:38-42` | Nicht Teil der extrahierten IG, aber Style-Guide-Anforderung. `[P]` | Mittel |
-| Titel "Zahlteil"/"Empfangsschein", mehrsprachige Annex-C-Labels, Annahmestelle | Nein | `app.js:131-144`, `index.html:1` (`lang="de-CH"`), `README.md:38-42` | Nur deutsche Labels, kein "Acceptance point", keine Romansh-Erweiterung. | Hoch |
+| Titel "Zahlteil"/"Empfangsschein", mehrsprachige Annex-C-Labels, Annahmestelle | Teilweise | `src/features.js` (LABELS DE/FR/IT), `app.js` (`slipHtml`), `index.html` (`#lang`) | DE/FR/IT-Labels und leere Annahmestellen-Zeile vorhanden; Platzierung/Typografie und Romansh fehlen. `[P]` Genaue Annex-C-Wortlaute nicht gegen Bildanhang verifiziert; Layout weiterhin nicht SIX-konform. | Hoch |
 | Schriften Arial/Frutiger/Helvetica/Liberation Sans, 6–11 pt, keine Kursiv/Unterstrichen (§3.4) | Nein | `style.css:19`, `style.css:132-143` | System-Font-Stack, 9 pt/7 pt/14 pt; nicht normkonform. | Mittel |
 | 5 mm Abstand zwischen Sektionen, unbedruckt (§3.5) | Teilweise | `style.css:134-136`, `app.js:127-137` | NR-Zelle mit 5 mm Gap vorhanden; keine Sektions-trennung nach Modell. | Mittel |
 | Billing information nur bei Personendaten drucken; Syntax mit SIX vereinbart (§4.3.3/Annex D) | Nein | `app.js:117-146` (Kein Feld 32 im Layout) | API-Feld vorhanden, Druckregel und Freigabeprozess fehlen. `[P]` | Mittel |
 | "DO NOT USE FOR PAYMENT"-Konvention (§4.4) | Nein | `src/core.js:204-206`, `app.js:131-135` | Betrag 0.00 möglich, aber keine Pflicht-/Grossbuchstaben-Message. | Mittel |
 | 100 % lokal, keine Externals, vendored MIT-Lizenz | Ja | `index.html:91-93`, `README.md:45-49`, `vendor/LICENSE-qrcode-generator.txt` | – | – |
-| Testabdeckung bei Logikänderung | Ja | `tests/run.js:1-200` | 20 Tests, `node tests/run.js` grün. | – |
+| Testabdeckung bei Logikänderung | Ja | `tests/run.js` | 27 Tests, `node tests/run.js` grün. | – |
 
 ## In dieser Prüfung behobene Fehler
 
@@ -70,8 +71,8 @@ Datum: 25.11.2026 · Geprüfter Stand: MVP v0.1 in `10M/05_Produkt/qrwerk/` · M
 
 ### Akzeptable MVP-Grenze (bei ehrlicher Dokumentation)
 
-- Reines CSV (kein XLSX), 5 QR-Bills pro Vorgang, keine Vorlagen/Speicherung/Login – dokumentiert in `README.md`.
-- Deutsche Labels und funktionaler Zahlteil, solange die Layout-Lücke sichtbar bleibt (`index.html:76-83`, `README.md:36-47`).
+- Reines CSV (kein XLSX), Gratislimit 5 QR-Bills pro Vorgang; Demo/Pro-Modus und Vorlagen sind rein lokal ohne Login – dokumentiert in `README.md`.
+- Dreisprachige Labels und funktionaler Zahlteil, solange die Layout-Lücke sichtbar bleibt (`index.html`, `README.md`).
 - Keine echte Perforation im Browser-PDF; kein physischer Papier-/Drucktest im MVP.
 - Keine Rechts-/Steuerberatung, keine Garantie für Bankannahme.
 - `[P]` Details der Annex-B-Matrix, des offiziellen Kreuz-Logos und der Registriermarks wurden aus Bildabbildungen nicht textuell verifiziert; hier ist eine manuelle Sichtprüfung der Original-PDF/Style-Guide nötig.

@@ -21,6 +21,11 @@
       <h1>Aus CSV werden geprüfte QR-Rechnungen.</h1>
       <p class="lead">Stapelweise, mit Prüfung von IBAN, QR-IBAN und Referenz – und ohne dass deine Kundendaten je den Browser verlassen.</p>
       <p class="hint">Kostenlos: 5 QR-Bills pro Vorgang. Kein Konto. Kein Upload. Keine Cookies.</p>
+      <div class="mode-switch">
+        <label class="check"><input id="pro-mode" type="checkbox"> Demo/Pro-Modus (lokal, unbegrenzt)</label>
+        <span id="mode-badge" class="badge">Gratis · max. 5</span>
+      </div>
+      <p id="mode-note" class="hint">Gratislimit: 5 QR-Bills pro Vorgang. Der Demo/Pro-Modus ist ein lokaler Schalter – kein Login, kein Kauf, keine Zahlung.</p>
     </section>
 
     <section class="card">
@@ -35,6 +40,12 @@
         <label>Land<input id="cr-country" value="CH" maxlength="2"></label>
         <label class="wide">IBAN / QR-IBAN<input id="cr-iban" value="" placeholder="CH93 0076 2011 6238 5295 7"></label>
       </div>
+      <div class="actions">
+        <button id="tpl-save" class="ghost" type="button">Vorlage speichern (nur lokal)</button>
+        <button id="tpl-load" class="ghost" type="button">Vorlage laden</button>
+        <span id="tpl-status" class="hint" role="status"></span>
+      </div>
+      <p class="hint">Vorlagen bleiben auf diesem Gerät (localStorage). Nichts geht an einen Server; kein Konto, keine Zahlung.</p>
     </section>
 
     <section class="card">
@@ -47,6 +58,20 @@
         <button id="parse" type="button">CSV prüfen</button>
         <label class="file">Datei wählen<input id="file" type="file" accept=".csv,.txt,text/csv"></label>
       </div>
+      <details class="local-templates">
+        <summary>Referenzmuster (nur lokal auf diesem Gerät)</summary>
+        <p class="hint">Gespeicherte Muster werden nur für CSV-Zeilen ohne eigene Referenz verwendet. Kein Upload, kein Server.</p>
+        <div class="actions">
+          <input id="tpl-ref-input" class="inline-input" placeholder="RF18539007547034" aria-label="Neues Referenzmuster">
+          <button id="tpl-ref-add" class="ghost" type="button">Muster speichern</button>
+        </div>
+        <div class="actions">
+          <select id="tpl-ref-list" aria-label="Gespeicherte Referenzmuster"></select>
+          <button id="tpl-ref-use" class="ghost" type="button">Muster aktivieren</button>
+          <button id="tpl-ref-clear" class="ghost" type="button">Aktives Muster entfernen</button>
+        </div>
+        <p id="active-ref" class="hint"></p>
+      </details>
     </section>
 
     <section class="card" id="result-card" hidden>
@@ -60,15 +85,24 @@
       </div>
       <div class="actions">
         <button id="generate" type="button">QR-Bills erzeugen</button>
+        <button id="export-csv" class="ghost" type="button" disabled>Bericht als CSV</button>
+        <button id="export-json" class="ghost" type="button" disabled>Bericht als JSON</button>
       </div>
-      <p id="gen-note" class="hint"></p>
+      <p id="gen-note" class="hint">Der Bericht wird direkt im Browser als Datei gespeichert – ohne Upload an Dritte.</p>
     </section>
 
     <section class="card" id="preview-card" hidden>
       <h2><span class="step">4</span> Vorschau &amp; Druck</h2>
-      <p class="sub">Drucken im Browserdialog auf A4, 100 % Skalierung, Kopf- und Fusszeilen aus.</p>
+      <p class="sub">Drucken im Browserdialog auf A4, 100 % Skalierung, Kopf- und Fusszeilen aus. Vereinfachtes Layout – kein vollständig SIX-konformes Drucklayout.</p>
       <div id="slips" class="slips"></div>
       <div class="actions no-print">
+        <label>Drucksprache
+          <select id="lang">
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+          </select>
+        </label>
         <button id="print" type="button">Drucken / als PDF speichern</button>
       </div>
     </section>
@@ -77,6 +111,7 @@
       <h2>Was dieses Tool nicht ist</h2>
       <ul>
         <li>Keine Rechts- oder Steuerberatung und keine Garantie für die Bankannahme.</li>
+        <li>Der Demo/Pro-Modus ist eine lokale Demo – kein Kauf, kein Abonnement, kein Zahlungsbeleg.</li>
         <li>Das gedruckte Layout ist ein funktionsfähiger MVP, noch kein vollständig SIX-stylierter Zahlteil mit Registriermarks und Perforation.</li>
         <li>Vor produktivem Einsatz die aktuelle SIX Implementation Guideline QR-bill v2.4 prüfen.</li>
       </ul>
@@ -90,6 +125,7 @@
 
   <script src="qrcode.js"></script>
   <script src="core.js"></script>
+  <script src="features.js"></script>
   <script src="tool-app.js"></script>
 </body>
 </html>
