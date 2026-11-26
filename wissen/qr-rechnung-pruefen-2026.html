@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR-Rechnung prüfen vor dem Versand – 5 Punkte nach SIX v2.4 | QRWerk Wissen</title>
+  <meta name="description" content="Kurze Checkliste für Schweizer QR-Rechnungen ab 14. November 2026: strukturierte Adresse, IBAN/Referenz-Paar, Währung, Betrag und Druck. Kostenlos, lokal, ohne Konto.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://phil-antrope.github.io/qrwerk/wissen/qr-rechnung-pruefen-2026.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org", "@type":"FAQPage", "mainEntity":[
+    {"@type":"Question","name":"Welche Adresse ist bei QR-Rechnungen ab 2026 erlaubt?","acceptedAnswer":{"@type":"Answer","text":"Seit Version 2.3 der SIX Implementation Guidelines ist nur noch die strukturierte Adresse (Typ S) zulässig. PLZ, Ort und Land sind beim Zahlungsempfänger zwingend; die alte kombinierte Adresse (Typ K) ist nicht mehr erlaubt."}},
+    {"@type":"Question","name":"Welche Kombination aus IBAN und Referenz ist gültig?","acceptedAnswer":{"@type":"Answer","text":"Eine QR-IBAN (IID 30000–31999) gehört zwingend zur 27-stelligen QRR-Referenz. Eine normale IBAN gehört zu einer SCOR-/RF-Referenz oder zu keiner strukturierten Referenz. Gemischte Paare sind nicht zulässig."}},
+    {"@type":"Question","name":"Darf eine QR-IBAN für Euro-Rechnungen verwendet werden?","acceptedAnswer":{"@type":"Answer","text":"Nein. Gemäss SIX IG QR-bill v2.4 ist die Kombination QR-IBAN/QRR nur für CHF vorgesehen. Für EUR wird eine normale IBAN mit SCOR-Referenz oder ohne Referenz verwendet."}},
+    {"@type":"Question","name":"Wie prüfe ich eine QR-Rechnung ohne Upload?","acceptedAnswer":{"@type":"Answer","text":"Mit einem lokalen Browser-Tool: CSV oder Felder eingeben, Prüfung laufen lassen und den Validierungsbericht ansehen. QRWerk verarbeitet alles im Browser, ohne Konto, ohne Cookies und ohne Datenübertragung."}}
+  ]}
+  </script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">Q</span> QRWerk · Wissen</div>
+    <div class="badges"><span class="badge">SPC 0200 · v2.4 · 14.11.2026</span></div></header>
+  <main>
+    <article>
+      <h1>QR-Rechnung prüfen: 5 Punkte vor dem Versand</h1>
+      <p class="lead">Seit dem <strong>14. November 2026</strong> gilt die SIX Implementation
+        Guideline QR-bill v2.4. Fünf Prüfungen decken die häufigsten Fehler ab – schnell, lokal
+        und ohne dass Rechnungsdaten irgendwo hochgeladen werden.</p>
+
+      <section class="card">
+        <h2>1. Adresstyp S statt K</h2>
+        <p>Der Zahlungsempfänger muss strukturiert erfasst sein: Strasse, Hausnummer, PLZ, Ort
+          und Land in getrennten Feldern. <strong>PLZ, Ort und Land sind zwingend.</strong> Alte
+          Vorlagen mit zwei freien Adresszeilen (Typ K) erzeugen seit Version 2.3 keine
+          zulässigen neuen QR-Rechnungen mehr.</p>
+      </section>
+
+      <section class="card">
+        <h2>2. IBAN und Referenz als festes Paar</h2>
+        <p><strong>QR-IBAN → QRR</strong>: Die 27-stellige QR-Referenz (26 Ziffern plus
+          rekursive Prüfziffer Modulo 10) gehört ausschliesslich zur QR-IBAN mit IID
+          30000–31999. <strong>Normale IBAN → SCOR oder NON</strong>: RF-Referenz nach ISO 11649
+          (5–25 Zeichen) oder gar keine strukturierte Referenz. Gemischte Paare sind unzulässig.</p>
+      </section>
+
+      <section class="card">
+        <h2>3. Währung und Referenz zusammen prüfen</h2>
+        <p>Nach v2.4 ist die Kombination QR-IBAN/QRR nur noch für <strong>CHF</strong> vorgesehen.
+          EUR-Rechnungen verwenden eine normale IBAN mit SCOR-Referenz oder ohne Referenz.
+          Beträge werden mit Punkt als Dezimalzeichen und genau zwei Nachkommastellen
+          angegeben; die Währung muss CHF oder EUR sein.</p>
+      </section>
+
+      <section class="card">
+        <h2>4. Pflichtfelder und Zeichensatz</h2>
+        <p>Name und Adresse des Empfängers, IBAN, Betrag und Währung müssen vollständig sein.
+          Umlaute und Sonderzeichen sind im Swiss QR Code zulässig, sofern UTF-8 korrekt
+          kodiert wird. Die unstrukturierte Mitteilung und die Rechnungsinformationen haben
+          zusammen höchstens 140 Zeichen.</p>
+      </section>
+
+      <section class="card tonal">
+        <h2>5. Druck und Scan</h2>
+        <p>Nach dem Erzeugen den QR-Code mit der Banking-App scannen und die angezeigten Daten
+          mit der Rechnung vergleichen. Ein Drucklayout ohne Perforation oder Registriermarks
+          ist für viele Anwendungen ausreichend, ersetzt aber keinen Banktest. Die Annahme
+          entscheidet immer die Bank.</p>
+      </section>
+
+      <section class="card">
+        <h2>Prüfung automatisieren</h2>
+        <p><a href="../tool.html">QRWerk kostenlos im Browser öffnen</a> — bis zu fünf
+          QR-Rechnungen pro Vorgang prüfen, ohne Upload und ohne Konto. Für Stapel, lokale
+          Vorlagen und einen Validierungsbericht als CSV/JSON gibt es
+          <a href="https://1502003004208.gumroad.com/l/focvs">QRWerk Pro für CHF 39 einmalig</a>.</p>
+        <p class="hint">Massgeblich ist die aktuelle Original-Spezifikation von SIX. QRWerk ist
+          kein SIX-Produkt, nicht zertifiziert, bietet keine Rechts- oder Steuerberatung und
+          keine Garantie für die Annahme durch eine Bank.</p>
+      </section>
+      <p><a href="index.html">← Alle Anleitungen</a></p>
+    </article>
+  </main>
+  <footer><span>QRWerk · anonymes Handelsbranding</span><span>Keine externen Ressourcen · keine Datenübertragung</span><span><a href="../rechtliches/nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="../rechtliches/widerruf.html">Widerruf</a></span></footer>
+</body>
+</html>
