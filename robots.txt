@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://phil-antrope.github.io/qrwerk/sitemap.xml
