@@ -11,7 +11,9 @@
   <script type="application/ld+json">
   { "@context":"https://schema.org", "@type":"FAQPage", "mainEntity":[
     {"@type":"Question","name":"Was hat sich am QR-Bill-Adressformat geändert?","acceptedAnswer":{"@type":"Answer","text":"Mit SIX QR-bill v2.3/v2.4 ist der kombinierte Adressdatensatz (Typ K) weggefallen. Es werden nur noch strukturierte Adressen (Typ S) verwendet."}},
-    {"@type":"Question","name":"Wie erkenne ich eine alte QR-Rechnung?","acceptedAnswer":{"@type":"Answer","text":"In Zeile 5 der SPC-Payload steht S für strukturiert oder K für die alte kombinierte Adresse."}}
+    {"@type":"Question","name":"Wie erkenne ich eine alte QR-Rechnung?","acceptedAnswer":{"@type":"Answer","text":"In Zeile 5 der SPC-Payload steht S für strukturiert oder K für die alte kombinierte Adresse."}},
+    {"@type":"Question","name":"Gilt Version 2.4 auch für Euro-Rechnungen?","acceptedAnswer":{"@type":"Answer","text":"Für CHF gibt es keine technischen Anpassungen. Für EUR sind nur noch die Kombinationen normale IBAN mit SCOR-Referenz und normale IBAN mit unstrukturierter Mitteilung erlaubt; QR-IBAN und QR-Referenz sind nur für CHF vorgesehen."}},
+    {"@type":"Question","name":"Wie lange bleibt Version 2.3 gültig?","acceptedAnswer":{"@type":"Answer","text":"Version 2.4 ist seit dem 14. November 2026 gültig. Version 2.3 bleibt noch bis November 2027 gültig."}}
   ]}
   </script>
 </head>
@@ -36,6 +38,23 @@
           Adressstruktur hin.</p>
       </section>
 
+      <section class="card">
+        <h2>Was Version 2.4 konkret ändert</h2>
+        <ul>
+          <li>Version 2.4 ist seit <strong>14. November 2026</strong> gültig; Version 2.3 bleibt
+            noch bis <strong>November 2027</strong> gültig.</li>
+          <li>Für Rechnungen in <strong>CHF</strong> sind keine technischen Anpassungen nötig.</li>
+          <li>Für <strong>EUR</strong> sind nur noch normale IBAN mit SCOR-Referenz (RF…) oder
+            mit unstrukturierter Mitteilung erlaubt. QR-IBAN und QR-Referenz sind nur für CHF
+            vorgesehen.</li>
+          <li>Die Hausnummer darf vorerst auch im Strassenfeld stehen; empfohlen bleibt das
+            eigene Feld.</li>
+          <li>Bei einem Zahlungsempfänger mit Sitz im Ausland, inklusive Liechtenstein, sollte
+            der Landescode immer auf dem Zahlteil angedruckt werden.</li>
+        </ul>
+        <p class="hint">Massgeblich ist die Original-Spezifikation der SIX Payment Standards.</p>
+      </section>
+
       <section class="card tonal">
         <h2>Was du tun solltest</h2>
         <ul>
@@ -52,6 +71,9 @@
         <p class="hint">Quelle: SIX Payment Standards, Implementation Guidelines QR-bill v2.4.
           QRWerk ist kein SIX-Produkt, nicht zertifiziert und bietet keine Beratung.</p>
       </section>
+      <p>Weiterführend: <a href="qr-iban-oder-iban.html">QR-IBAN oder normale IBAN?</a> ·
+        <a href="qr-rechnung-pruefen-2026.html">Prüfliste vor dem Versand</a> ·
+        <a href="csv-zu-qr-bill.html">QR-Bills aus CSV in Stapeln</a></p>
       <p><a href="index.html">← Alle Anleitungen</a></p>
     </article>
   </main>
